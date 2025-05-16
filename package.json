@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@vivliostyle/cli": "^9.1.0",
+    "@vivliostyle/theme-techbook": "^2.0.0"
+  },
+  "scripts": {
+    "build": "vivliostyle build",
+    "preview": "vivliostyle preview"
+  }
+}
