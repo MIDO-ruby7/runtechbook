@@ -1,10 +1,15 @@
 {
   "devDependencies": {
     "@vivliostyle/cli": "^9.1.0",
-    "@vivliostyle/theme-techbook": "^2.0.0"
+    "@vivliostyle/theme-techbook": "^2.0.0",
+    "tsx": "^4.20.1"
   },
   "scripts": {
     "build": "vivliostyle build",
-    "preview": "vivliostyle preview"
+    "start": "vivliostyle preview"
+  },
+  "dependencies": {
+    "@vivliostyle/vfm": "^2.2.1",
+    "gray-matter": "^4.0.3"
   }
 }
