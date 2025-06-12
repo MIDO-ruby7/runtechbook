@@ -6,10 +6,15 @@
   },
   "scripts": {
     "build": "vivliostyle build",
-    "start": "vivliostyle preview"
+    "start": "vivliostyle preview",
+    "watch-css": "chokidar 'custom_themes/**/*.css' -c 'touch .vivliostyle/publication.json'",
+    "dev": "concurrently -k -n preview,watch-css -c blue,green \"bun run start\" \"bun run watch-css\""
   },
   "dependencies": {
     "@vivliostyle/vfm": "^2.2.1",
-    "gray-matter": "^4.0.3"
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.1.2",
+    "gray-matter": "^4.0.3",
+    "yargs": "^18.0.0"
   }
 }

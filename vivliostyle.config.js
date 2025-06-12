@@ -6,13 +6,13 @@ module.exports = {
   langage: 'ja',
   size: 'B5',
   entry: [
-    { path: 'common/toc.md', title: '目次', theme: './theme/base.css' },
-    { path: 'common/preface.md', title: 'はじめに', theme: './theme/base.css' },
+    { path: 'common/toc.md', title: '目次', theme: './custom_themes/base.css' },
+    { path: 'common/preface.md', title: 'はじめに', theme: './custom_themes/base.css' },
     ...entries,
-    { path: 'common/postface.md', title: 'おわりに', theme: './theme/base.css' },
-    { path: 'common/colophon.md', title: '奥付け', theme: './theme/base.css' },
+    { path: 'common/postface.md', title: 'おわりに', theme: './custom_themes/base.css' },
+    { path: 'common/colophon.md', title: '奥付け', theme: './custom_themes/base.css' },
   ],
-  toc: true,
+  toc: false,
   vfm: {
     hardLineBreaks: true,
     disableFormatHtml: false, // ← HTML変換を無効にしない

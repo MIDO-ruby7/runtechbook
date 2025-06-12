@@ -111,9 +111,59 @@ body {
 nav[role="doc-toc"] {
   page-break-after: always;
   font-size: 0.9em;
+  background: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 1em 1.5em;
+  max-width: 40em;
+  margin: 0 auto 3em auto;
+  box-shadow: none;
+  color: #444;
 }
+
+nav[role="doc-toc"] h2 {
+  font-size: 1.3em;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3em;
+  margin-bottom: 1em;
+  color: #333;
+}
+
 nav[role="doc-toc"] ol {
+  padding-left: 1.2em;
+  list-style: none;
+  counter-reset: toc-counter;
+}
+
+nav[role="doc-toc"] li {
+  margin: 0.35em 0;
+  counter-increment: toc-counter;
+  position: relative;
   padding-left: 1.5em;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  color: #567;
+}
+
+nav[role="doc-toc"] li::before {
+  content: counter(toc-counter) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 600;
+  color: #678;
+}
+
+nav[role="doc-toc"] li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 400;
+}
+
+nav[role="doc-toc"] li a:hover {
+  text-decoration: underline;
+  color: #000;
 }
 
 /***************************************************
