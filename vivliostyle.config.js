@@ -6,11 +6,12 @@ module.exports = {
   langage: 'ja',
   size: 'B5',
   entry: [
-    { path: 'common/toc.md', title: '目次', theme: './custom_themes/base.css' },
-    { path: 'common/preface.md', title: 'はじめに', theme: './custom_themes/base.css' },
+    { path: 'common/toc.md', title: '目次', theme: './styles/toc.css' },
+    { path: 'common/preface.md', title: 'はじめに', theme: './styles/base.css' },
+    { path: 'common/preface2.md', title: 'はじめに', theme: './styles/base.css' },
     ...entries,
-    { path: 'common/postface.md', title: 'おわりに', theme: './custom_themes/base.css' },
-    { path: 'common/colophon.md', title: '奥付け', theme: './custom_themes/base.css' },
+    { path: 'common/postface.md', title: 'おわりに', theme: './styles/base.css' },
+    { path: 'common/colophon.md', title: '奥付け', theme: './styles/base.css' },
   ],
   toc: false,
   vfm: {

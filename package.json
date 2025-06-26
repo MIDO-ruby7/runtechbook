@@ -2,12 +2,14 @@
   "devDependencies": {
     "@vivliostyle/cli": "^9.1.0",
     "@vivliostyle/theme-techbook": "^2.0.0",
+    "copyfiles": "^2.4.1",
     "tsx": "^4.20.1"
   },
   "scripts": {
-    "build": "vivliostyle build",
+    "toc": "bun tsx script/generate-toc.ts",
+    "build": "bun run toc && vivliostyle build",
     "start": "vivliostyle preview",
-    "watch-css": "chokidar 'custom_themes/**/*.css' -c 'touch .vivliostyle/publication.json'",
+    "watch-css": "chokidar 'styles/**/*.css' -c 'touch .vivliostyle/publication.json'",
     "dev": "concurrently -k -n preview,watch-css -c blue,green \"bun run start\" \"bun run watch-css\""
   },
   "dependencies": {

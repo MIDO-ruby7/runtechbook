@@ -1,0 +1,809 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'body';
+  font-weight: 100;
+  src: local("TazuganeGothicStdN-UltLt");
+}
+
+@font-face {
+  font-family: 'body';
+  font-weight: 200;
+  src: local("TazuganeGothicStdN-Thin");
+}
+
+@font-face {
+  font-family: 'body';
+  font-weight: 300;
+  src: local("TazuganeGothicStdN-Light");
+}
+
+@font-face {
+  font-family: 'body';
+  font-weight: 400;
+  src: local("TazuganeGothicStdN-Book");
+}
+
+@font-face {
+  font-family: 'body';
+  font-weight: 500;
+  src: local("TazuganeGothicStdN-Regular");
+}
+
+@font-face {
+  font-family: 'body';
+  font-weight: 600;
+  src: local("TazuganeGothicStdN-Medium");
+}
+
+@font-face {
+  font-family: 'body';
+  font-weight: 700;
+  src: local("TazuganeGothicStdN-Heavy");
+}
+
+@font-face {
+  font-family: 'body';
+  font-weight: 800;
+  src: local("TazuganeGothicStdN-Black");
+}
+
+@font-face {
+  font-family: 'body';
+  font-weight: 900;
+  src: local("TazuganeGothicStdN-XBlack");
+}
+
+@font-face {
+  font-family: 'Yakumono';
+  src: url("assets/YakuCaltGothic/YakuCaltGothic-R.woff") format("woff"), url("assets/YakuCaltGothic/YakuCaltGothic-R.otf") format("opentype");
+}
+
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+ 
+/*---------------------------------------------
+  コードブロック全般のスタイル設定
+  対象: コードが書かれている全ての要素（pre, code）
+----------------------------------------------*/
+code[class*='language-'],
+pre[class*='language-'] {
+  color: #f8f8f2; /* テキストの色（オフホワイト） */
+  background: none; /* 背景色をなしに設定 */
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3); /* テキストに薄い影をつけて浮き立たせる */
+  font-size: 1em; /* フォントサイズをデフォルトに設定 */
+  text-align: left; /* 左揃え */
+  white-space: pre; /* 改行をそのまま反映 */
+  word-spacing: normal; /* 通常の単語間スペース */
+  word-break: normal; /* 単語の途中での改行を許可しない */
+  word-wrap: normal; /* 単語を途中で改行しない */
+  line-height: 1.5; /* 行間を1.5倍に設定 */
+  -moz-tab-size: 4; /* Firefox用タブ幅 */
+  -o-tab-size: 4; /* Opera用タブ幅 */
+  tab-size: 4; /* 標準のタブ幅 */
+  -webkit-hyphens: none; /* Webkit系ブラウザでのハイフン（改行）の無効化 */
+  -moz-hyphens: none; /* Firefox用ハイフンの無効化 */
+  -ms-hyphens: none; /* IE用ハイフンの無効化 */
+  hyphens: none; /* ハイフンの無効化 */
+}
+
+/*---------------------------------------------
+  コードブロックのスタイル設定（preタグ内）
+----------------------------------------------*/
+pre[class*='language-'] {
+  padding: 1em; /* 内側の余白 */
+  margin: 0.5em 0; /* 上下の外側余白 */
+  overflow: auto; /* コンテンツがはみ出た場合にスクロール可能 */
+  border-radius: 0.3em; /* 角を丸くする */
+}
+
+/*---------------------------------------------
+  コードブロックの背景色設定（非preタグ内のコードも含む）
+----------------------------------------------*/
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: #272822; /* 背景色をダークグリーン（Monokai風）に設定 */
+}
+
+/*---------------------------------------------
+  インラインコードのスタイル設定（codeタグ内）
+----------------------------------------------*/
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em; /* 内側の余白 */
+  border-radius: 0.3em; /* 角を丸くする */
+  white-space: normal; /* 改行をそのまま反映 */
+}
+
+/*---------------------------------------------
+  各トークン（コメント、構文、記号など）の色設定
+----------------------------------------------*/
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray; /* コメントの色をスレートグレーに設定 */
+}
+
+.token.punctuation {
+  color: #f8f8f2; /* 記号類（ピリオド、カンマなど）の色 */
+}
+
+.namespace {
+  opacity: 0.7; /* 名前空間の透明度を少し下げる */
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #f92672; /* プロパティ、タグ、定数、シンボル、削除された部分の色 */
+}
+
+.token.boolean,
+.token.number {
+  color: #ae81ff; /* 真偽値（Boolean）と数値の色 */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a6e22e; /* セレクタ、属性名、文字列、キャラクター、ビルトイン関数、挿入された部分の色 */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2; /* 演算子、エンティティ、URL、CSSの文字列、変数の色 */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #e6db74; /* アットルール、属性値、関数、クラス名の色 */
+}
+
+.token.keyword {
+  color: #66d9ef; /* キーワード（if, else, for など）の色 */
+}
+
+.token.regex,
+.token.important {
+  color: #fd971f; /* 正規表現、重要な部分の色 */
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold; /* 重要な部分や太字部分を太字に */
+}
+
+.token.italic {
+  font-style: italic; /* イタリック部分のスタイルを適用 */
+}
+
+.token.entity {
+  cursor: help; /* エンティティにマウスを載せるとヘルプカーソルに変更 */
+}
+
+/*---------------------------------------------
+  コードブロック全般に追加のスタイル設定
+  テキストの影を削除し、行間と文字間を調整
+----------------------------------------------*/
+code[class*='language-'],
+pre[class*='language-'] {
+  line-height: 1.2 !important; /* 行間を調整 */
+  letter-spacing: 0.03rem !important; /* 文字間隔を少し広げる */
+  border-radius: 0.2rem !important; /* 角を丸く設定 */
+  text-shadow: none !important; /* テキスト影を削除 */
+}
+
+/*---------------------------------------------
+  インラインコードの追加スタイル設定
+  背景色、余白、角の丸みを調整
+----------------------------------------------*/
+:not(pre) > code {
+  padding: 0.2rem 0.4rem; /* 余白を少し広げる */
+  background-color: #ecf0f1; /* 背景色を薄いグレーに設定 */
+  border-radius: 0.2rem; /* 角を丸くする */
+  line-height: 1; /* 行間をデフォルトに */
+}
+
+/*---------------------------------------------
+  印刷用メディアスタイル
+  印刷時にコードのトークンごとの色を変更
+  ----------------------------------------------*/
+@media print {
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #8394a5; /* コメント、プロローグ、DOCTYPE、CDATAの色 */
+  }
+  .token.punctuation {
+    color: #ffffff; /* 記号の色 */
+  }
+  .namespace {
+    opacity: 0.7; /* 名前空間の透明度を少し下げる */
+  }
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #ff6aa0; /* プロパティ、タグ、定数、シンボル、削除されたトークンの色 */
+  }
+  .token.boolean,
+  .token.number {
+    color: #bc9df7; /* 真偽値（Boolean）と数値の色 */
+  }
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #d3fa85; /* セレクタ、属性名、文字列、キャラクター、ビルトイン関数、挿入されたトークンの色 */
+  }
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string,
+  .token.variable {
+    color: #ffffff; /* 演算子、エンティティ、URL、CSSの文字列、変数の色 */
+  }
+  .token.atrule,
+  .token.attr-value,
+  .token.function,
+  .token.class-name {
+    color: #e6db74; /* アットルール、属性値、関数、クラス名の色 */
+  }
+  .token.keyword {
+    color: #97dfee; /* キーワード（if, else など）の色 */
+  }
+  .token.regex,
+  .token.important {
+    color: #fcbb71; /* 正規表現、重要なトークンの色 */
+  }
+}
+
+/*---------------------------------------------
+  基本のフォント設定
+  Webページ全体の基本フォントを設定
+----------------------------------------------*/
+:root {
+  font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+  font-weight: 400; /* 標準的なフォントの太さ */
+  line-height: 1.7; /* 行間の設定 */
+}
+
+/*---------------------------------------------
+  見出しのフォント設定
+  h1～h3タグのフォント設定とそのサイズ
+----------------------------------------------*/
+h1,
+h2,
+h3 {
+  font-feature-settings: 'palt', 'calt'; /* 文字の合字を使用 */
+}
+
+h1 {
+  font-size: 2.4rem; /* h1の文字サイズ */
+  line-height: 1.2; /* 行間の設定 */
+}
+
+h2 {
+  font-size: 1.8rem; /* h2の文字サイズ */
+  line-height: 1.2; /* 行間の設定 */
+}
+
+h3 {
+  font-size: 1.4rem; /* h3の文字サイズ */
+  line-height: 1.2; /* 行間の設定 */
+}
+
+/*---------------------------------------------
+  リンクのスタイル設定
+  通常、訪問済み、ホバー時の色の設定
+----------------------------------------------*/
+a {
+  text-decoration: none; /* リンクの下線を消す */
+  color: #3498db; /* 通常時のリンク色 */
+}
+
+a:visited {
+  color: #9b59b6; /* 訪問済みリンク色 */
+}
+
+a:hover {
+  text-decoration: underline; /* ホバー時に下線を追加 */
+  color: #e74c3c; /* ホバー時のリンク色 */
+}
+
+/*---------------------------------------------
+  段落のスタイル設定
+  改行を自動で調整し、文章を左右揃え
+----------------------------------------------*/
+p {
+  font-feature-settings: 'calt'; /* 合字を使用 */
+  text-align: justify; /* 両端揃え */
+}
+
+/*---------------------------------------------
+  コード部分のフォント設定
+  インラインコードやコードブロックのフォントを指定
+----------------------------------------------*/
+code {
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif !important;
+}
+
+/*---------------------------------------------
+  プレコード（codeブロック）に装飾を追加
+  余白やボックスのスタイルを設定
+----------------------------------------------*/
+pre {
+  box-decoration-break: clone; /* 複数ページに渡る場合の装飾を分割 */
+}
+
+/*---------------------------------------------
+  リスト（ul, ol）の設定
+  インデントを設定してリスト項目の余白を調整
+----------------------------------------------*/
+ul, ol {
+  padding-inline-start: 1.5em; /* 左のインデントを設定 */
+}
+
+/*---------------------------------------------
+  画像の設定
+  最大幅を100%に設定し、画像の中央寄せを行う
+----------------------------------------------*/
+img {
+  max-width: 100%; /* 画像の最大幅を100%に設定 */
+  max-height: 70%
+  margin: 0.5rem auto; /* 上下の余白と中央寄せ */
+}
+
+/*---------------------------------------------
+  図（figure）のスタイル設定
+  図の周囲の余白とテキストの配置を調整
+----------------------------------------------*/
+figure {
+  margin: 1.5rem auto; /* 図の余白を設定 */
+  text-align: center; /* 中央寄せ */
+}
+
+figure img {
+  max-width: 100%; /* 図内の画像を最大幅100%に設定 */
+  margin: 0.5rem auto; /* 上下の余白を設定 */
+}
+
+figure figcaption {
+  margin: 1rem auto; /* 図のキャプションの余白 */
+  width: 90%; /* 幅を90%に設定 */
+  font-size: 90%; /* フォントサイズを少し小さく設定 */
+}
+
+/*---------------------------------------------
+  表（table）のスタイル設定
+  表の余白やボーダーを調整
+----------------------------------------------*/
+table {
+  display: table;
+  max-width: 100%; /* 表の最大幅を100%に設定 */
+  margin: 1rem auto; /* 表の上下余白 */
+  border-color: currentColor; /* 表のボーダー色を現在の色に設定 */
+  border-collapse: collapse; /* 表のボーダーを重ねて表示 */
+}
+
+table th, table td {
+  padding: .2em .2em .2em 0; /* セルの余白 */
+  background-color: transparent; /* セルの背景色を透明に設定 */
+  border: 0; /* ボーダーをなしに設定 */
+}
+
+table th:first-child, table td:first-child {
+  padding-left: .2em; /* 左端に少し余白を追加 */
+}
+
+table th {
+  border-top: 1px solid; /* 上部のボーダーを設定 */
+  border-bottom: 1px solid; /* 下部のボーダーを設定 */
+}
+
+table tr {
+  box-shadow: 0 0.7px 0 -0.3px currentColor; /* 行の影を設定 */
+}
+
+table tr:last-child {
+  border-bottom: 1px solid; /* 最後の行の下部ボーダーを設定 */
+}
+
+/*---------------------------------------------
+  引用（blockquote）のスタイル設定
+  背景色や余白を設定し、引用を強調
+----------------------------------------------*/
+blockquote {
+  margin: 1em 1.5rem; /* 引用の上下左右余白を設定 */
+  background-color: #ecf0f1; /* 引用部分の背景色を設定 */
+  padding: 0.5em 1em; /* 引用部分の内側余白を設定 */
+  border-radius: 0.2rem; /* 引用部分の角を丸く設定 */
+}
+
+blockquote :not(pre) > code {
+  padding: 0; /* 引用内のコードの余白を削除 */
+  word-break: break-all; /* 単語を途中で改行して折り返し表示 */
+}
+
+/*---------------------------------------------
+  その他の要素設定
+  例えば著者情報やページ分割など
+----------------------------------------------*/
+.draft-author {
+  text-align: right; /* 著者情報を右揃え */
+  margin-bottom: 3rem; /* 著者情報の下に余白を設定 */
+}
+
+.page-break {
+  page-break-after: always !important; /* ページ分割 */
+}
+
+
+/*---------------------------------------------
+  印刷用メディアスタイル
+  ・ページレイアウトの細かな調整
+  ・印刷時に表示される要素の設定
+----------------------------------------------*/
+@media print {
+  :root {
+    widows: 3; /* ページが分割される際の最小行数 */
+    orphans: 3; /* ページが分割される際の最小段落数 */
+    hyphens: auto; /* 自動的に単語をハイフンで分割 */
+    font-size: 75%; /* フォントサイズを縮小 */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid; /* 見出しの後でページ分割を避ける */
+  }
+
+  h1 {
+    font-size: 2rem; /* h1タグのフォントサイズ */
+  }
+  
+  h2 {
+    font-size: 1.5rem; /* h2タグのフォントサイズ */
+  }
+
+  h3 {
+    font-size: 1.2rem; /* h3タグのフォントサイズ */
+  }
+
+  tr, th, td {
+    break-inside: avoid; /* 表の行内で分割を避ける */
+  }
+
+  a {
+    color: currentColor; /* リンク色を現在の文字色に合わせる */
+    text-decoration: underline; /* リンクに下線を追加 */
+  }
+
+  article > h1,
+  section#profile {
+    margin-top: -10mm; /* プロフィールセクションの上余白を調整 */
+  }
+
+  pre[class*='language-'] {
+    font-size: 90%; /* コードブロックのフォントサイズを調整 */
+    text-overflow: ellipsis; /* コードが長い場合は省略記号を表示 */
+  }
+
+  table {
+    font-size: 80%; /* 表のフォントサイズを縮小 */
+  }
+
+  .footnote {
+    float: footnote; /* 脚注をフロートさせる */
+    text-align: left; /* 脚注を左寄せに */
+  }
+}
+
+/*---------------------------------------------
+  @pageスタイル
+  ・ページ全体のレイアウトや余白を設定
+  ・ヘッダーやフッターの内容を設定
+----------------------------------------------*/
+@page {
+  size: 182mm 257mm; /* A5サイズのページ設定 */
+  margin-top: 25mm; /* 上余白 */
+  padding-top: 15mm; /* 上パディング */
+  margin-bottom: 33mm; /* 下余白 */
+  
+  /* ヘッダーとフッターの設定 */
+  @top-left-corner {
+    content: '';
+    margin-bottom: 8mm;
+    background-color: rgb(0, 0, 0);
+  }
+  
+  @top-center {
+    content: '';
+    margin-bottom: 8mm;
+    background-color: rgb(0, 0, 0);
+  }
+
+  @top-right-corner {
+    content: '';
+    margin-bottom: 8mm;
+    background-color: rgb(0, 0, 0);
+  }
+
+  @bottom-left-corner {
+    content: '';
+    margin-top: -8mm;
+    margin-bottom: -3mm;
+    margin-left: -3mm;
+    background-color: #ffffff;
+    z-index: 1000; /* 最前面に表示 */
+  }
+
+  @bottom-right-corner {
+    content: '';
+    margin-top: -8mm;
+    margin-bottom: -3mm;
+    margin-right: -3mm;
+    background-color: #ffffff;
+    z-index: 1000; /* 最前面に表示 */
+  }
+}
+
+/*---------------------------------------------
+  初ページの設定
+  ・最初のページのヘッダーやフッターを非表示にする
+----------------------------------------------*/
+@page :first {
+  background-color: none;
+  @top-left-corner {
+    content: none;
+  }
+
+  @top-center {
+    content: none;
+  }
+
+  @top-right-corner {
+    content: none;
+  }
+
+  @bottom-center {
+    content: none;
+  }
+
+  @bottom-left-corner {
+    content: none;
+  }
+
+  @bottom-right-corner {
+    content: none;
+  }
+}
+
+/*---------------------------------------------
+  左ページの設定
+  ・ページ内のタイトルやページ番号のレイアウト
+----------------------------------------------*/
+@page :left {
+  margin-left: 18mm; /* 左余白 */
+  margin-right: 30mm; /* 右余白 */
+  
+  @top-center {
+    content: env(pub-title); /* 出版物タイトルを表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%; /* 小さいフォントサイズ */
+    color: #ffffff;
+    text-align: left;
+    padding-top: 8mm;
+  }
+
+  @bottom-left {
+    content: counter(page); /* ページ番号を表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%;
+    border-left: 1px solid;
+    margin-top: 15mm;
+    margin-bottom: -3mm;
+    padding: 0 4mm 15mm 4mm;
+    background-color: #ffffff;
+  }
+}
+
+/*---------------------------------------------
+  右ページの設定
+  ・右ページのタイトルやページ番号のレイアウト
+----------------------------------------------*/
+@page :right {
+  margin-left: 35mm; /* 左余白 */
+  margin-right: 18mm; /* 右余白 */
+  
+  @top-center {
+    content: env(doc-title); /* ドキュメントタイトルを表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%; /* 小さいフォントサイズ */
+    color: #ffffff;
+    text-align: right;
+    padding-top: 8mm;
+  }
+
+  @bottom-right {
+    content: counter(page); /* ページ番号を表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%;
+    border-right: 1px solid;
+    margin-top: 15mm;
+    margin-bottom: -3mm;
+    padding: 0 4mm 15mm 4mm;
+    background-color: white;
+  }
+}
+
+/*---------------------------------------------
+  目次の設定
+  ・目次の項目とリンクのスタイル
+----------------------------------------------*/
+nav#toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav#toc li {
+  margin-bottom: 1em;
+}
+
+nav#toc li a::after {
+  content: target-counter(attr(href), page); /* リンク先のページ番号を表示 */
+}
+
+nav#toc li a {
+  display: inline-flex;
+  width: 100%;
+  text-decoration: none;
+  color: currentColor;
+  align-items: center;
+}
+
+nav#toc li a::before {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  content: '';
+  order: 1;
+  flex: auto;
+  height: 1px;
+  box-shadow: 0 0.7px 0 -0.3px currentColor;
+}
+
+nav#toc li a::after {
+  text-align: right;
+  content: target-counter(attr(href), page); /* ページ番号を表示 */
+  flex: none;
+  order: 2;
+}
+
+nav#toc .title {
+  font-size: 120%; /* 目次のタイトルサイズ */
+}
+
+nav#toc .author {
+  line-height: 1;
+}
+
+/*---------------------------------------------
+  プロフィールセクションのスタイル
+  ・著者情報の表示を調整
+----------------------------------------------*/
+section#profile .author {
+  display: flex;
+  margin: 1rem 0;
+}
+
+section#profile .author img {
+  margin: 0 10px 8px 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; /* プロフィール画像を円形に */
+}
+
+section#profile code {
+  margin: 0 0 0 .5em;
+}
+
+section#profile code > i {
+  vertical-align: -.03em;
+  margin-right: .4em;
+}
+
+section#profile .profile {
+  flex-grow: 1;
+}
+
+section#profile .profile h4 {
+  display: inline-block;
+  margin: 0 0 4px;
+}
+
+/*---------------------------------------------
+  コロンフォン（後書き）セクション
+  ・情報表やエディション情報のレイアウト
+----------------------------------------------*/
+section#colophon {
+  position: relative;
+  float-reference: page;
+  float: bottom;
+  margin-bottom: 0;
+}
+
+section#colophon ul.editions {
+  padding: 0;
+  list-style: none;
+}
+
+section#colophon ul.editions time {
+  display: inline-block;
+  width: 10em;
+}
+
+section#colophon table.info {
+  margin: 0;
+  width: 100%;
+  border-top: 2px solid currentColor;
+}
+
+section#colophon table.info tr {
+  border: 0;
+  box-shadow: none;
+}
+
+section#colophon table.info tr:last-child {
+  border-bottom: 1px solid currentColor;
+}
+
+section#colophon table.info td {
+  vertical-align: top;
+  padding-left: 0;
+}
+
+article > h1 {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+article > h1::before {
+  content: '';
+  position: absolute;
+  left: -140px;
+  right: -140px;
+  bottom: -6rem;
+  height: 250px;
+  background: no-repeat url(assets/article_bg.png) bottom;
+  background-size: contain;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+@media screen {
+  article > h1::before {
+    left: 0;
+    right: 0;
+    height: 400px;
+    opacity: 0.5;
+  }
+}
+
+/*# sourceMappingURL=bundle.css.map */
