@@ -52,22 +52,43 @@ author: "midori"
 1. 番号付きリスト
 2. 2つ目
 
-### リンク・画像
+### リンク
+PDF配布時にテキストにリンクを付けたい場合は以下のように記述します。
 
 ```markdown
 [リンクテキスト](https://example.com)
-![代替テキスト](image.png)
 ```
 
 [リンクテキスト](https://example.com)
-![代替テキスト](image.png)
+
+但し、著作物の引用などを行う場合は基本的に注釈を用いてください。
+
+### 注釈
+
+```
+これは注釈付きの文章です[^1]。
+
+[^1]: これは脚注の内容です。
+```
+
+これは注釈付きの文章です[^1]。
+
+[^1]: これは脚注の内容です。
+
+### 画像
+画像をimagesフォルダに追加するか、URLリンクを取得します。
+```
+![説明文](../images/image.png)
+```
+
+![説明文](../images/google.svg)
 
 画像の幅を指定するには次のように記述します：
 
 ```markdown
-![説明文](image.png){style="width:70%;"}
+![説明文](../images/google.svg){style="width:50%;"}
 ```
-![説明文](image.png){style="width:70%;"}
+![説明文](../images/google.svg){style="width:50%;"}
 
 ### コード
 
@@ -91,22 +112,22 @@ console.log("Hello Vivliostyle!");
 console.log("Hello Vivliostyle!");
 ```
 
-### 注釈
-```
-これは注釈付きの文章です[^1]。
-
-[^1]: これは脚注の内容です。
-```
-
-これは注釈付きの文章です[^1]。
-
-[^1]: これは脚注の内容です。
-
 ### HTMLとの併用
-
 VivliostyleではHTMLも使用可能です：
 
-```html
+### 改ページ
+`class="page-break"`を付与する
+
+```
+<div class="page-break">ここで改行</div>
+```
+
+<div class="page-break">ここで改行</div>
+
+### カスタムスタイルを当てたい
+
+CSSを当てたい箇所にクラスを付与する
+```markdown
 <div class="custom-box">
   カスタムスタイルのボックス
 </div>
@@ -122,15 +143,6 @@ CSSを用いて装飾：
 }
 ```
 
----
-
-## 📄 VivliostyleでPDF出力する流れ
-
-1. Markdown（.md）ファイルを作成
-2. Vivliostyle CLI または Vivliostyle Pub を使用してHTMLに変換
-3. ブラウザでHTMLを開き、印刷またはPDFとして出力（Chrome推奨）
-
----
 
 ## 🧩 参考リンク
 
