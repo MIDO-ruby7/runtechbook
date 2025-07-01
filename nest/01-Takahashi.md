@@ -3,7 +3,8 @@ title: "【Rails7+esbuild】必要なJavaScriptのみ個別に読み込みたい
 author: "Takahashi"
 ---
 
-# 【Rails7+esbuild】必要なJavaScriptのみ個別に読み込みたい時
+# 【Rails7+esbuild】必要なJavaScriptのみ<br/>個別に読み込みたい時
+<div class="author">著者名</div>
 
 ## 必要なJavaScriptのみ個別に読み込みたい
 

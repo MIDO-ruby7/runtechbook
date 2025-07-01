@@ -2,11 +2,6 @@
 title: "Cloudflareで独自ドメインを取得する"
 author: "tanuki"
 ---
-
-この記事は、プログラミングスールRUNTEQ内で[けーすけさん](https://twitter.com/saku0suke)が主催する「Advent Calendar Challenge」に参加しております。素敵な企画ありがとうございます。
-
-https://advent-calendar-challenge.onrender.com/
-
 # Cloudflareで独自ドメインを取得する
 
 ### ①Cloudflareに登録・ログイン

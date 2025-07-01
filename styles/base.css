@@ -1,63 +1,5 @@
 @charset "UTF-8";
 
-@font-face {
-  font-family: 'body';
-  font-weight: 100;
-  src: local("TazuganeGothicStdN-UltLt");
-}
-
-@font-face {
-  font-family: 'body';
-  font-weight: 200;
-  src: local("TazuganeGothicStdN-Thin");
-}
-
-@font-face {
-  font-family: 'body';
-  font-weight: 300;
-  src: local("TazuganeGothicStdN-Light");
-}
-
-@font-face {
-  font-family: 'body';
-  font-weight: 400;
-  src: local("TazuganeGothicStdN-Book");
-}
-
-@font-face {
-  font-family: 'body';
-  font-weight: 500;
-  src: local("TazuganeGothicStdN-Regular");
-}
-
-@font-face {
-  font-family: 'body';
-  font-weight: 600;
-  src: local("TazuganeGothicStdN-Medium");
-}
-
-@font-face {
-  font-family: 'body';
-  font-weight: 700;
-  src: local("TazuganeGothicStdN-Heavy");
-}
-
-@font-face {
-  font-family: 'body';
-  font-weight: 800;
-  src: local("TazuganeGothicStdN-Black");
-}
-
-@font-face {
-  font-family: 'body';
-  font-weight: 900;
-  src: local("TazuganeGothicStdN-XBlack");
-}
-
-@font-face {
-  font-family: 'Yakumono';
-  src: url("assets/YakuCaltGothic/YakuCaltGothic-R.woff") format("woff"), url("assets/YakuCaltGothic/YakuCaltGothic-R.otf") format("opentype");
-}
 
 /**
  * okaidia theme for JavaScript, CSS and HTML
@@ -282,9 +224,12 @@ pre[class*='language-'] {
   Webページ全体の基本フォントを設定
 ----------------------------------------------*/
 :root {
-  font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
   font-weight: 400; /* 標準的なフォントの太さ */
   line-height: 1.7; /* 行間の設定 */
+  font-feature-settings: "palt" 1; /* プロポーショナルメトリクス */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /*---------------------------------------------
@@ -294,17 +239,26 @@ pre[class*='language-'] {
 h1,
 h2,
 h3 {
-  font-feature-settings: 'palt', 'calt'; /* 文字の合字を使用 */
+  font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  font-feature-settings: 'palt' 1, 'calt' 1; /* 文字の合字を使用 */
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 h2 {
-  font-size: 1.8rem; /* h2の文字サイズ */
-  line-height: 1.2; /* 行間の設定 */
+  font-size: 1.6rem; /* h2の文字サイズ */
+  line-height: 1.4; /* 行間の設定 */
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
 }
 
 h3 {
-  font-size: 1.4rem; /* h3の文字サイズ */
-  line-height: 1.2; /* 行間の設定 */
+  font-size: 1.3rem; /* h3の文字サイズ */
+  line-height: 1.5; /* 行間の設定 */
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  color: #34495e;
 }
 
 /*---------------------------------------------
@@ -330,8 +284,11 @@ a:hover {
   改行を自動で調整し、文章を左右揃え
 ----------------------------------------------*/
 p {
-  font-feature-settings: 'calt'; /* 合字を使用 */
+  font-feature-settings: 'calt' 1, 'kern' 1; /* 合字とカーニングを使用 */
   text-align: justify; /* 両端揃え */
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.2rem;
 }
 
 /*---------------------------------------------
@@ -339,7 +296,9 @@ p {
   インラインコードやコードブロックのフォントを指定
 ----------------------------------------------*/
 code {
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif !important;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Consolas", "Menlo", "Source Code Pro", "Courier New", monospace !important;
+  font-size: 0.9em;
+  font-feature-settings: "liga" 1, "calt" 1; /* コード用リガチャ */
 }
 
 /*---------------------------------------------
@@ -364,7 +323,7 @@ ul, ol {
 ----------------------------------------------*/
 img {
   max-width: 100%; /* 画像の最大幅を100%に設定 */
-  max-height: 70%
+  max-height: 70%;
   margin: 0.5rem auto; /* 上下の余白と中央寄せ */
 }
 
@@ -446,6 +405,21 @@ blockquote :not(pre) > code {
 .draft-author {
   text-align: right; /* 著者情報を右揃え */
   margin-bottom: 3rem; /* 著者情報の下に余白を設定 */
+  font-size: 0.9rem;
+  color: #4682b4;
+  font-style: italic;
+}
+
+/* h1直下の著者名表示 */
+h1 + .author {
+  display: block;
+  margin: -2px 0 2rem 0;
+  padding: 0.8rem 2rem;
+  font-size: 0.9rem;
+  color: #4682b4;
+  font-weight: 500;
+  position: relative;
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
 }
 
 .page-break {
@@ -508,24 +482,25 @@ blockquote :not(pre) > code {
   ・ヘッダーやフッターの内容を設定
 ----------------------------------------------*/
 @page {
-  size: 182mm 257mm; /* A5サイズのページ設定 */
+  size: 182mm 257mm; /* B5サイズのページ設定 */
+  counter-increment: page;
 
   /* ヘッダーとフッターの設定 */
   @top-left-corner {
     content: '';
-    margin-bottom: 8mm;
+    margin-bottom: 0;
     background-color: #ffffff;
   }
 
   @top-center {
     content: '';
-    margin-bottom: 8mm;
+    margin-bottom: 0;
     background-color: #ffffff;
   }
 
   @top-right-corner {
     content: '';
-    margin-bottom: 8mm;
+    margin-bottom: 0;
     background-color: #ffffff;
   }
 
@@ -555,19 +530,27 @@ blockquote :not(pre) > code {
 @page :left {
   margin-left: 15mm; /* 左余白 */
   margin-right: 30mm; /* 右余白 */
+  margin-top: 15mm; /* 上余白 */
+  margin-bottom: 20mm; /* 下余白 */
 
-  @top-center {
+  @left-middle {
     content: env(pub-title); /* 出版物タイトルを表示 */
-    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
-    font-size: 75%; /* 小さいフォントサイズ */
-    color: #00aaff;
-    text-align: left;
-    padding-top: 8mm;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+    font-size: 65%; /* 小さいフォントサイズ */
+    color: #4682b4;
+    writing-mode: vertical-rl; /* 縦書き右から左 */
+    text-orientation: mixed; /* 文字の向き */
+    padding: 5mm 2mm;
+    margin-right: 5mm;
+    margin-left: 0;
+    background: linear-gradient(to bottom, rgba(135, 206, 235, 0.1), transparent);
+    border-right: 1px solid rgba(70, 130, 180, 0.2);
+    letter-spacing: 0.1em;
   }
 
   @bottom-left {
     content: counter(page); /* ページ番号を表示 */
-    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
     font-size: 75%;
     border-left: 1px solid;
     margin-top: 15mm;
@@ -584,19 +567,27 @@ blockquote :not(pre) > code {
 @page :right {
   margin-left: 35mm; /* 左余白 */
   margin-right: 15mm; /* 右余白 */
+  margin-top: 15mm; /* 上余白 */
+  margin-bottom: 20mm; /* 下余白 */
 
-  @top-center {
+  @right-middle {
     content: env(doc-title); /* 記事タイトルを表示 */
-    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
-    font-size: 75%; /* 小さいフォントサイズ */
-    color: #00aaff;
-    text-align: right;
-    padding-top: 8mm;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+    font-size: 65%; /* 小さいフォントサイズ */
+    color: #4682b4;
+    writing-mode: vertical-rl; /* 縦書き右から左 */
+    text-orientation: mixed; /* 文字の向き */
+    padding: 5mm 2mm;
+    margin-left: 5mm;
+    margin-right: 0;
+    background: linear-gradient(to bottom, rgba(135, 206, 235, 0.1), transparent);
+    border-left: 1px solid rgba(70, 130, 180, 0.2);
+    letter-spacing: 0.1em;
   }
 
   @bottom-right {
     content: counter(page); /* ページ番号を表示 */
-    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
     font-size: 75%;
     border-right: 1px solid;
     margin-top: 15mm;
@@ -608,21 +599,31 @@ blockquote :not(pre) > code {
 
 h1 {
   position: relative;
-  font-size: 1.5rem;
-  line-height: 1.4;
-  padding: 0.5em 1em;
-  font-weight: 600;
-  background: linear-gradient(to right, #e8f0fe, #ffffff);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+  color: #222;
+  border: 2px solid #222; /* しっかりめの黒枠 */
+  border-radius: 0.75rem;
+  background: white;
+  z-index: 2;
+  isolation: isolate;
+  width: calc(100% - 2rem); /* 左右の余白を考慮して幅を調整 */
 }
 
-@media screen {
-  h1::before {
-    left: 0;
-    right: 0;
-    height: 300px;
-    opacity: 0.2;
-  }
+h1::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 5px; right: -8px; bottom: -8px;
+  background: #9ac7df;
+  border-radius: 0.75rem;
+  z-index: -1;
+  filter: blur(1px);
+  opacity: 0.5;
+  transform: rotate(-0.5deg);
 }
 
 li[role="doc-endnote"] a {
