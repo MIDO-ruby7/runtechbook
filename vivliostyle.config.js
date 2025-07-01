@@ -9,7 +9,7 @@ module.exports = {
   size: 'B5',
   entry: [
     { path: 'common/toc.md', title: '目次', theme: './styles/toc.css' },
-    { path: 'common/preface.md', title: 'はじめに', theme: './styles/base.css' },
+    { path: 'common/preface.md', title: 'はじめに', theme: './styles/preface.css' },
     { path: 'common/preface2.md', title: 'はじめに', theme: './styles/base.css' },
     ...nest,
     ...hub,

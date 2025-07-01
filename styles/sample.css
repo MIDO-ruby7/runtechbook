@@ -1,0 +1,103 @@
+/*---------------------------------------------
+  @pageスタイル
+  ・ページ全体のレイアウトや余白を設定
+  ・ヘッダーやフッターの内容を設定
+----------------------------------------------*/
+@page {
+  size: 182mm 257mm; /* A5サイズのページ設定 */
+
+  /* ヘッダーとフッターの設定 */
+  @top-left-corner {
+    content: '';
+    margin-bottom: 8mm;
+    background-color: rgb(0, 0, 0);
+  }
+
+  @top-center {
+    content: '';
+    margin-bottom: 8mm;
+    background-color: rgb(0, 0, 0);
+  }
+
+  @top-right-corner {
+    content: '';
+    margin-bottom: 8mm;
+    background-color: rgb(0, 0, 0);
+  }
+
+  @bottom-left-corner {
+    content: '';
+    margin-top: -8mm;
+    margin-bottom: -3mm;
+    margin-left: -3mm;
+    background-color: #ffffff;
+    z-index: 1000; /* 最前面に表示 */
+  }
+
+  @bottom-right-corner {
+    content: '';
+    margin-top: -8mm;
+    margin-bottom: -3mm;
+    margin-right: -3mm;
+    background-color: #ffffff;
+    z-index: 1000; /* 最前面に表示 */
+  }
+}
+
+/*---------------------------------------------
+  左ページの設定
+  ・ページ内のタイトルやページ番号のレイアウト
+----------------------------------------------*/
+@page :left {
+  margin-left: 18mm; /* 左余白 */
+  margin-right: 30mm; /* 右余白 */
+
+  @top-center {
+    content: env(pub-title); /* 出版物タイトルを表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%; /* 小さいフォントサイズ */
+    color: #ffffff;
+    text-align: left;
+    padding-top: 8mm;
+  }
+
+  @bottom-left {
+    content: counter(page); /* ページ番号を表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%;
+    border-left: 1px solid;
+    margin-top: 15mm;
+    margin-bottom: -3mm;
+    padding: 0 4mm 15mm 4mm;
+    background-color: #ffffff;
+  }
+}
+
+/*---------------------------------------------
+  右ページの設定
+  ・右ページのタイトルやページ番号のレイアウト
+----------------------------------------------*/
+@page :right {
+  margin-left: 35mm; /* 左余白 */
+  margin-right: 18mm; /* 右余白 */
+
+  @top-center {
+    content: env(doc-title); /* 記事タイトルを表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%; /* 小さいフォントサイズ */
+    color: #ffffff;
+    text-align: right;
+    padding-top: 8mm;
+  }
+
+  @bottom-right {
+    content: counter(page); /* ページ番号を表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%;
+    border-right: 1px solid;
+    margin-top: 15mm;
+    margin-bottom: -3mm;
+    padding: 0 4mm 15mm 4mm;
+    background-color: white;
+  }
+}

@@ -1,17 +1,17 @@
 module.exports = [
   {
-    path: 'nest/01-nakano.md',
-    title: 'Reactと状態管理',
+    path: 'nest/01-Takahashi.md',
+    title: '【Rails7+esbuild】必要なJavaScriptのみ個別に読み込みたい時',
     theme: './styles/base.css'
   },
   {
-    path: 'nest/02-matsuda.md',
-    title: 'RustでCLIツール開発',
+    path: 'nest/02-tanuki.md',
+    title: 'Cloudflareで独自ドメインを取得する',
     theme: './styles/base.css'
   },
   {
     path: 'nest/37-midori.md',
-    title: 'CSS設計の実践',
+    title: '未経験からフルリモートのエンジニアになってもうすぐ1年なのでフルリモ向いてる人を考えてみる',
     theme: './styles/base.css'
   },
 ];

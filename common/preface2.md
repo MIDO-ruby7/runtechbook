@@ -3,7 +3,7 @@ title: "Vivliostyle + Markdown ドキュメントガイド"
 author: "midori"
 ---
 
-## Vivliostyle + Markdown ドキュメントガイド
+# Vivliostyle + Markdown ドキュメントガイド
 
 ## 📝 基本的なMarkdown記法
 
@@ -81,14 +81,14 @@ PDF配布時にテキストにリンクを付けたい場合は以下のよう�
 ![説明文](../images/image.png)
 ```
 
-![説明文](../images/google.svg)
+![説明文](../images/midori.png)
 
 画像の幅を指定するには次のように記述します：
 
 ```markdown
-![説明文](../images/google.svg){style="width:50%;"}
+![説明文](../images/midori.png){style="width:50%;"}
 ```
-![説明文](../images/google.svg){style="width:50%;"}
+![説明文](../images/midori.png){style="width:50%;"}
 
 ### コード
 

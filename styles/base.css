@@ -64,7 +64,7 @@
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
- 
+
 /*---------------------------------------------
   コードブロック全般のスタイル設定
   対象: コードが書かれている全ての要素（pre, code）
@@ -297,11 +297,6 @@ h3 {
   font-feature-settings: 'palt', 'calt'; /* 文字の合字を使用 */
 }
 
-h1 {
-  font-size: 2.4rem; /* h1の文字サイズ */
-  line-height: 1.2; /* 行間の設定 */
-}
-
 h2 {
   font-size: 1.8rem; /* h2の文字サイズ */
   line-height: 1.2; /* 行間の設定 */
@@ -475,10 +470,6 @@ blockquote :not(pre) > code {
     break-after: avoid; /* 見出しの後でページ分割を避ける */
   }
 
-  h1 {
-    font-size: 2rem; /* h1タグのフォントサイズ */
-  }
-  
   h2 {
     font-size: 1.5rem; /* h2タグのフォントサイズ */
   }
@@ -494,11 +485,6 @@ blockquote :not(pre) > code {
   a {
     color: currentColor; /* リンク色を現在の文字色に合わせる */
     text-decoration: underline; /* リンクに下線を追加 */
-  }
-
-  article > h1,
-  section#profile {
-    margin-top: -10mm; /* プロフィールセクションの上余白を調整 */
   }
 
   pre[class*='language-'] {
@@ -523,27 +509,24 @@ blockquote :not(pre) > code {
 ----------------------------------------------*/
 @page {
   size: 182mm 257mm; /* A5サイズのページ設定 */
-  margin-top: 25mm; /* 上余白 */
-  padding-top: 15mm; /* 上パディング */
-  margin-bottom: 33mm; /* 下余白 */
-  
+
   /* ヘッダーとフッターの設定 */
   @top-left-corner {
     content: '';
     margin-bottom: 8mm;
-    background-color: rgb(0, 0, 0);
+    background-color: #ffffff;
   }
-  
+
   @top-center {
     content: '';
     margin-bottom: 8mm;
-    background-color: rgb(0, 0, 0);
+    background-color: #ffffff;
   }
 
   @top-right-corner {
     content: '';
     margin-bottom: 8mm;
-    background-color: rgb(0, 0, 0);
+    background-color: #ffffff;
   }
 
   @bottom-left-corner {
@@ -560,39 +543,8 @@ blockquote :not(pre) > code {
     margin-top: -8mm;
     margin-bottom: -3mm;
     margin-right: -3mm;
-    background-color: #ffffff;
+    background-color:#ffffff;
     z-index: 1000; /* 最前面に表示 */
-  }
-}
-
-/*---------------------------------------------
-  初ページの設定
-  ・最初のページのヘッダーやフッターを非表示にする
-----------------------------------------------*/
-@page :first {
-  background-color: none;
-  @top-left-corner {
-    content: none;
-  }
-
-  @top-center {
-    content: none;
-  }
-
-  @top-right-corner {
-    content: none;
-  }
-
-  @bottom-center {
-    content: none;
-  }
-
-  @bottom-left-corner {
-    content: none;
-  }
-
-  @bottom-right-corner {
-    content: none;
   }
 }
 
@@ -601,14 +553,14 @@ blockquote :not(pre) > code {
   ・ページ内のタイトルやページ番号のレイアウト
 ----------------------------------------------*/
 @page :left {
-  margin-left: 18mm; /* 左余白 */
+  margin-left: 15mm; /* 左余白 */
   margin-right: 30mm; /* 右余白 */
-  
+
   @top-center {
     content: env(pub-title); /* 出版物タイトルを表示 */
     font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
     font-size: 75%; /* 小さいフォントサイズ */
-    color: #ffffff;
+    color: #00aaff;
     text-align: left;
     padding-top: 8mm;
   }
@@ -631,13 +583,13 @@ blockquote :not(pre) > code {
 ----------------------------------------------*/
 @page :right {
   margin-left: 35mm; /* 左余白 */
-  margin-right: 18mm; /* 右余白 */
-  
+  margin-right: 15mm; /* 右余白 */
+
   @top-center {
-    content: env(doc-title); /* ドキュメントタイトルを表示 */
+    content: env(doc-title); /* 記事タイトルを表示 */
     font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
     font-size: 75%; /* 小さいフォントサイズ */
-    color: #ffffff;
+    color: #00aaff;
     text-align: right;
     padding-top: 8mm;
   }
@@ -654,156 +606,32 @@ blockquote :not(pre) > code {
   }
 }
 
-/*---------------------------------------------
-  目次の設定
-  ・目次の項目とリンクのスタイル
-----------------------------------------------*/
-nav#toc ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav#toc li {
-  margin-bottom: 1em;
-}
-
-nav#toc li a::after {
-  content: target-counter(attr(href), page); /* リンク先のページ番号を表示 */
-}
-
-nav#toc li a {
-  display: inline-flex;
-  width: 100%;
-  text-decoration: none;
-  color: currentColor;
-  align-items: center;
-}
-
-nav#toc li a::before {
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  content: '';
-  order: 1;
-  flex: auto;
-  height: 1px;
-  box-shadow: 0 0.7px 0 -0.3px currentColor;
-}
-
-nav#toc li a::after {
-  text-align: right;
-  content: target-counter(attr(href), page); /* ページ番号を表示 */
-  flex: none;
-  order: 2;
-}
-
-nav#toc .title {
-  font-size: 120%; /* 目次のタイトルサイズ */
-}
-
-nav#toc .author {
-  line-height: 1;
-}
-
-/*---------------------------------------------
-  プロフィールセクションのスタイル
-  ・著者情報の表示を調整
-----------------------------------------------*/
-section#profile .author {
-  display: flex;
-  margin: 1rem 0;
-}
-
-section#profile .author img {
-  margin: 0 10px 8px 0;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%; /* プロフィール画像を円形に */
-}
-
-section#profile code {
-  margin: 0 0 0 .5em;
-}
-
-section#profile code > i {
-  vertical-align: -.03em;
-  margin-right: .4em;
-}
-
-section#profile .profile {
-  flex-grow: 1;
-}
-
-section#profile .profile h4 {
-  display: inline-block;
-  margin: 0 0 4px;
-}
-
-/*---------------------------------------------
-  コロンフォン（後書き）セクション
-  ・情報表やエディション情報のレイアウト
-----------------------------------------------*/
-section#colophon {
+h1 {
   position: relative;
-  float-reference: page;
-  float: bottom;
-  margin-bottom: 0;
-}
-
-section#colophon ul.editions {
-  padding: 0;
-  list-style: none;
-}
-
-section#colophon ul.editions time {
-  display: inline-block;
-  width: 10em;
-}
-
-section#colophon table.info {
-  margin: 0;
-  width: 100%;
-  border-top: 2px solid currentColor;
-}
-
-section#colophon table.info tr {
-  border: 0;
-  box-shadow: none;
-}
-
-section#colophon table.info tr:last-child {
-  border-bottom: 1px solid currentColor;
-}
-
-section#colophon table.info td {
-  vertical-align: top;
-  padding-left: 0;
-}
-
-article > h1 {
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-article > h1::before {
-  content: '';
-  position: absolute;
-  left: -140px;
-  right: -140px;
-  bottom: -6rem;
-  height: 250px;
-  background: no-repeat url(assets/article_bg.png) bottom;
-  background-size: contain;
-  z-index: -1;
-  opacity: 0.7;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  padding: 0.5em 1em;
+  font-weight: 600;
+  background: linear-gradient(to right, #e8f0fe, #ffffff);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 @media screen {
-  article > h1::before {
+  h1::before {
     left: 0;
     right: 0;
-    height: 400px;
-    opacity: 0.5;
+    height: 300px;
+    opacity: 0.2;
   }
+}
+
+li[role="doc-endnote"] a {
+  display: inline-block !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /*# sourceMappingURL=bundle.css.map */

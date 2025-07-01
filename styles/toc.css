@@ -1,99 +1,187 @@
-/* ベーススタイル */
-body {
-  font-family: "Helvetica", "Arial", sans-serif;
-  line-height: 1.6;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
+/* 色・フォントベース */
+:root {
+  --accent-color: #00aaff;
+  --text-color: #333;
+  --title-font: "Helvetica", "Arial", sans-serif;
+  --body-font: "Helvetica", "Arial", sans-serif;
+}
+
+/*---------------------------------------------
+  @pageスタイル
+  ・ページ全体のレイアウトや余白を設定
+  ・ヘッダーやフッターの内容を設定
+----------------------------------------------*/
+@page {
+  size: 182mm 257mm; /* A5サイズのページ設定 */
+
+  @bottom-left-corner {
+    content: '';
+    margin-top: -8mm;
+    margin-bottom: -3mm;
+    margin-left: -3mm;
+    background-color: #ffffff;
+    z-index: 1000; /* 最前面に表示 */
+  }
+
+  @bottom-right-corner {
+    content: '';
+    margin-top: -8mm;
+    margin-bottom: -3mm;
+    margin-right: -3mm;
+    background-color: #ffffff;
+    z-index: 1000; /* 最前面に表示 */
+  }
+}
+
+/*---------------------------------------------
+  左ページの設定
+  ・ページ内のタイトルやページ番号のレイアウト
+----------------------------------------------*/
+@page :left {
+  margin-left: 18mm; /* 左余白 */
+  margin-right: 30mm; /* 右余白 */
+
+  @top-center {
+    content: env(pub-title); /* 出版物タイトルを表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%; /* 小さいフォントサイズ */
+    color: #ffffff;
+    text-align: left;
+    padding-top: 8mm;
+  }
+
+  @bottom-left {
+    content: counter(page); /* ページ番号を表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%;
+    border-left: 1px solid;
+    margin-top: 15mm;
+    margin-bottom: -3mm;
+    padding: 0 4mm 15mm 4mm;
+    background-color: #ffffff;
+  }
+}
+
+/*---------------------------------------------
+  右ページの設定
+  ・右ページのタイトルやページ番号のレイアウト
+----------------------------------------------*/
+@page :right {
+  margin-left: 35mm; /* 左余白 */
+  margin-right: 18mm; /* 右余白 */
+
+  @top-center {
+    content: env(doc-title); /* 記事タイトルを表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%; /* 小さいフォントサイズ */
+    color: #ffffff;
+    text-align: right;
+    padding-top: 8mm;
+  }
+
+  @bottom-right {
+    content: counter(page); /* ページ番号を表示 */
+    font-family: "Neue Frutiger World", "Verdana", "Yakumono", "body", "Hiragino Sans", sans-serif;
+    font-size: 75%;
+    border-right: 1px solid;
+    margin-top: 15mm;
+    margin-bottom: -3mm;
+    padding: 0 4mm 15mm 4mm;
+    background-color: white;
+  }
 }
 
 /* 目次セクション */
 section.level1 {
-  padding: 2rem;
-  background-color: #ffffff;
-  border-radius: 8px;
+  padding: 3rem 2rem;
   max-width: 800px;
-  margin: 2rem auto;
+  margin: auto;
+  font-family: var(--body-font);
+  color: var(--text-color);
 }
 
-/* 目次のタイトル */
+/* メインタイトル */
 h1#目次 {
-  font-size: 2.5rem;
-  text-align: center;
-  color: #3498db;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5rem;
-  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: var(--accent-color);
+  border-top: 3px solid var(--accent-color);
+  padding-top: 1rem;
+  margin-bottom: 3rem;
 }
 
-/* 番号付きリスト */
-ol {
-  padding-left: 1.5rem;
-  list-style: none; /* 通常の番号リストを削除 */
-  counter-reset: section; /* 番号付けをリセット */
-}
-
-ol li {
-  font-size: 1.1rem;
-  margin: 0.8rem 0;
-  padding-left: 1.5rem;
+/* セクション（章）タイトル */
+section.level2 > h2 {
+  font-size: 1.4rem;
+  color: var(--accent-color);
+  border-bottom: 1px dotted var(--accent-color);
+  padding-bottom: 0.3rem;
+  margin: 2.5rem 0 1rem;
   position: relative;
 }
 
-/* 番号付きリストの番号 */
-ol li::before {
-  content: counter(section) ". "; /* 番号 */
-  counter-increment: section;
-  position: absolute;
-  left: -2rem;
-  top: 0;
-  font-weight: bold;
-  color: #3498db;
-}
-
-/* 強調部分 (はじめに, おわりに, 奥付) */
-ol li strong {
+section.level2 > h2::before {
+  content: "第";
   font-size: 1.2rem;
-  color: #2c3e50;
-  font-weight: bold;
+  color: var(--accent-color);
+  margin-right: 0.2em;
 }
 
-/* リンクスタイル */
-a {
-  color: #2980b9;
+section.level2 > h2::after {
+  content: "章";
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  margin-left: 0.2em;
+}
+
+/* 番号付きリスト全体 */
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: item;
+}
+
+/* 各目次アイテム */
+ol li {
+  counter-increment: item;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1rem;
+  margin: 0.4rem 0;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 0.2rem;
+}
+
+/* 各項目の左側（タイトル） */
+ol li a {
+  color: var(--text-color);
   text-decoration: none;
-  font-weight: normal;
+  flex: 1;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
-a:hover {
-  color: #e74c3c;
-  text-decoration: underline;
-}
-
-/* 著者名のスタイル */
-li a:after {
-  content: " — " attr(data-author); /* 著者名をリンクの後に追加 */
+/* 著者名は右寄せにせずタイトルの横に */
+ol li a::after {
+  content: " " attr(data-author);
   font-style: italic;
-  color: #7f8c8d;
+  color: #888;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
 }
 
-/* スマホ・タブレット対応 */
-@media (max-width: 768px) {
-  section.level1 {
-    padding: 1rem;
-  }
+/* ダミーページ番号風の右端表示 */
+ol li::after {
+  content: "00" counter(item); /* 実際は動的にページ番号を入れるべき */
+  color: var(--accent-color);
+  font-family: monospace;
+  margin-left: 1rem;
+}
 
-  h1#目次 {
-    font-size: 2rem;
-  }
-
-  ol li {
-    font-size: 1rem;
-  }
-
-  ol li::before {
-    font-size: 1rem;
-    left: -1.5rem;
-  }
+/* 強調（はじめに／おわりに等） */
+ol li strong {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #000;
 }

@@ -1,12 +1,12 @@
 module.exports = [
   {
-    path: 'free/01-nakano.md',
-    title: 'Reactと状態管理',
+    path: 'free/01-sample.md',
+    title: 'ChatGPTの効果的な使い方',
     theme: './styles/base.css'
   },
   {
-    path: 'free/02-matsuda.md',
-    title: 'RustでCLIツール開発',
+    path: 'free/02-sample.md',
+    title: 'Samlpe Title',
     theme: './styles/base.css'
   },
 ];
