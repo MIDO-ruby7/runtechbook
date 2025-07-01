@@ -28,6 +28,7 @@
 
    新しい技術に触れる機会になればと考え、Bun を使用しています。
    公式 Doc に Mac or Windows のインストール方法が載っていますので各自インストールをお願いします。
+   https://bun.sh/docs/installation#macos-and-linux
 
     2-2. **リポジトリをフォークする**
 
@@ -45,7 +46,7 @@
     ```bash
     git clone https://github.com/あなたのアカウント/runtechbook.git
     cd runtechbook
-    bun install
+    bun run install
     ```
 
      `bun run dev` でブラウザ上にプレビューを表示できます。また、実際の印刷状態を確認するには `bun run build` でPDFを出力します。
