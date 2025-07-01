@@ -1,12 +1,78 @@
-# 原稿執筆・提出の流れ
+# 📚 RUNTEQ技術同人誌 - 原稿執筆ガイド
 
 このプロジェクトでは、"エンジニアらしく技術書を書く"ということをテーマに、**Markdown 原稿を GitHub で提出**して頂きます。
+
+## 🚀 クイックスタート
+
+### 1. Bunのインストール
+このプロジェクトでは高速なJavaScriptランタイム「Bun」を使用します。
+
+```bash
+# macOS/Linux
+brew install oven-sh/bun/bun
+
+# Windows (PowerShell管理者権限で実行)
+scoop install bun
+```
+npm でのinstallも使用可能です。
+
+詳細は[Bun公式ドキュメント](https://bun.sh/docs/installation)を参照してください。
+
+### 2. リポジトリのセットアップ
+まずは、本リポジトリをフォークしてください。
+
+```bash
+# リポジトリをフォーク後、クローン
+git clone https://github.com/あなたのアカウント/runtechbook.git
+cd runtechbook
+
+# 依存関係をインストール
+bun install
+
+# 開発サーバーを起動（プレビュー確認）
+bun run dev
+
+# PDF出力（印刷状態の確認）
+bun run build
+```
+
+## ✍️ 執筆を始める前に
+
+### 1. テンプレートをコピーして執筆開始
+
+```bash
+# 例：NESTテーマで執筆する場合
+cp テンプレート.md nest/卒業期-あなたの名前.md
+```
+
+### 2. ファイル冒頭に必ず以下を記入
+
+```markdown
+---
+title: "あなたの記事タイトル"
+author: "あなたの名前"
+---
+```
+
+この情報は目次の自動生成に使用されます。
+
+## 📖 Vivliostyle + Markdown ガイド
+
+Markdownの詳しい書き方やVivliostyleの使い方については、以下のガイドを参照してください：
+
+👉 **[Vivliostyle + Markdown ドキュメントガイド](common/preface2.md)**
+
+このガイドには以下の内容が含まれています：
+- 基本的なMarkdown記法
+- Vivliostyle特有の機能
+- 画像の挿入方法
+- ページレイアウトの調整方法
 
 ## ✍️ 執筆方法
 
 **Markdown 形式**で原稿を書き、**Vivliostyle.js**を用いて本の形に組版します。
 
-#### Vivliostyle とは？
+### Vivliostyle とは？
 
 - Markdown → HTML に変換し、CSS で紙面のようなレイアウトを適用できるツール
 - Vivliostyle.js を使うことで、**ブラウザ上でプレビューしながら組版**できます
@@ -22,39 +88,23 @@
 
    以上3点から、これらのサービスの下書き機能を利用して記事を書き上げるのがおすすめです。
 
-2. **環境構築**
+2. **リポジトリをフォークする**
 
-   2-1. **Bunのインストール**
+   以下の URL から、公式リポジトリをフォークしてください：
 
-   新しい技術に触れる機会になればと考え、Bun を使用しています。
-   公式 Doc に Mac or Windows のインストール方法が載っていますので各自インストールをお願いします。
-   https://bun.sh/docs/installation#macos-and-linux
+   👉 [https://github.com/MIDO-ruby7/runtechbook](https://github.com/MIDO-ruby7/runtechbook)
 
-    2-2. **リポジトリをフォークする**
-
-    以下の URL から、公式リポジトリをフォークしてください：
-
-    👉 [https://github.com/MIDO-ruby7/runtechbook](https://github.com/MIDO-ruby7/runtechbook)
-
-    GitHub アカウントでログイン後、「Fork」ボタンを押して、自分のアカウントにコピーを作成します。
-
-    2-3. **ローカル環境のセットアップ**
-
-    フォークしたリポジトリをクローンし、依存パッケージをインストールしてください。
-    このプロジェクトでは [Bun](https://bun.sh/) を使います。
-
-    ```bash
-    git clone https://github.com/あなたのアカウント/runtechbook.git
-    cd runtechbook
-    bun run install
-    ```
-
-     `bun run dev` でブラウザ上にプレビューを表示できます。また、実際の印刷状態を確認するには `bun run build` でPDFを出力します。
-
+   GitHub アカウントでログイン後、「Fork」ボタンを押して、自分のアカウントにコピーを作成します。
 
 3. **原稿ファイルを追加する**
 
   - ブランチを切ります。(ブランチ名は任意で良いです)
+
+  - **テンプレートをコピーして執筆開始**：
+    ```bash
+    # テンプレートをコピー（例：NESTテーマの場合）
+    cp テンプレート.md nest/37-yourname.md
+    ```
 
   - 執筆するテーマに応じて、以下のディレクトリに Markdown ファイルを追加してください：
 
@@ -78,25 +128,42 @@
     ```
 
   - `$ bun run dev` で起動し、表現や段落、画像サイズ、位置などを本らしく整えていきます。
+    
+    **💡 プレビューについて**
+    - `bun run dev` を実行すると、ブラウザで http://localhost:3000 が開きます
+    - Markdownファイルを編集すると、**リアルタイムでプレビューが更新**されます
+    - 実際の本のレイアウトを確認しながら執筆できます
 
- **その他、詳しい書き方**
+4. **詳しい書き方は Vivliostyle ガイドを参照**
 
-## 提出方法
-### 目次用にタイトルと著者名を追加
-ご自身の.mdファイルの冒頭に以下を追記してください。
-```
+   👉 **[Vivliostyle + Markdown ドキュメントガイド](common/preface2.md)**
+
+## 📤 提出方法
+
+### 1. ⚠️ 重要：記事冒頭の設定
+**必ず**ご自身の.mdファイルの冒頭に以下を追記してください：
+
+```markdown
 ---
 title: "記事のタイトル"
-author: "midori"
+author: "あなたの名前"
 ---
-
 ```
-これを`script/generate-toc.ts`で拾って目次を自動生成します。
 
-### ビルドして出力を確認
- `$ bun run build` でPDF出力を行なってください。ここでエラーが出たり、レイアウトが崩れている場合は修正してください。目次にご自身の名前が載っているかもご確認ください。
+> **注意**: この設定がないと目次に記事が表示されません！
+> `script/generate-toc.ts`がこの情報を使って目次を自動生成します。
 
-### Pull Requestを作成
+### 2. ビルドして出力を確認
+```bash
+bun run build
+```
+PDFが生成されるので、以下を確認してください：
+- エラーが出ていないか
+- レイアウトが崩れていないか
+- 印刷プレビューで白黒にしてみて、見えづらいところがないか
+- **目次にご自身の記事と名前が載っているか**
+
+### 3. Pull Requestを作成
 
 執筆が完了したら、`main` ブランチに対して Pull Request を作成してください。
 
@@ -119,15 +186,6 @@ PR 本文には、以下を記載いただけると嬉しいです：
 
 後日フォーム or 特定ファイルへの追記で募集予定です。
 詳細は Discord にてお知らせします。
-
----
-
-## 🧑‍💻 開発者向け補足情報
-
-- 技術スタック：Bun + Vivliostyle.js + Markdown
-- デザインテーマ：[@vivliostyle/theme-techbook](https://github.com/vivliostyle/themes/tree/main/packages/theme-techbook)
-- 組版設定：`vivliostyle.config.js`
-- 目次生成スクリプト：`script/generate-toc.ts`
 
 ---
 
