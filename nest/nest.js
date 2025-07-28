@@ -14,4 +14,9 @@ module.exports = [
     title: '未経験からフルリモートのエンジニアになってもうすぐ1年なのでフルリモ向いてる人を考えてみる',
     theme: './styles/base.css'
   },
+  {
+    path: 'nest/36-toshiki003.md',
+    title: 'PHPでcurlコマンドの実態を探る（仮）',
+    theme: './styles/base.css'
+  }
 ];
