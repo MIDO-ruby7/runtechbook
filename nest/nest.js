@@ -16,7 +16,7 @@ module.exports = [
   },
   {
     path: 'nest/36-toshiki003.md',
-    title: 'PHPでcurlコマンドの実態を探る（仮）',
+    title: '文字化けから学ぶ、文字コード',
     theme: './styles/base.css'
   }
 ];
