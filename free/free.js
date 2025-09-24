@@ -9,4 +9,9 @@ module.exports = [
     title: 'Samlpe Title',
     theme: './styles/base.css'
   },
+  {
+    path: 'free/59-botofune.md',
+    title: 'JavaScriptからの護身術',
+    theme: './styles/base.css'
+  },
 ];

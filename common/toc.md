@@ -15,6 +15,7 @@
 ## 自由
 7. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
 8. [Samlpe Title](#02-sample)  —  Taro
+9. [Javascriptからの護身術](#59-botofune)  —  ぼとふね
 
-9. **おわりに**
-10. **奥付**
+10. **おわりに**
+11. **奥付**
