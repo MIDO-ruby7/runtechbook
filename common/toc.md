@@ -11,10 +11,11 @@
 ## HUB
 5. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
 6. [Samlpe Title](#02-sample)  —  Taro
+7. [振り返りを習慣化させるアプリ、ReflectHubをSupabaseとNext.jsで作成してみる。](#27-hiiragi)  —  柊
 
 ## 自由
-7. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
-8. [Samlpe Title](#02-sample)  —  Taro
+8. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
+9. [Samlpe Title](#02-sample)  —  Taro
 
-9. **おわりに**
-10. **奥付**
+10. **おわりに**
+11. **奥付**
