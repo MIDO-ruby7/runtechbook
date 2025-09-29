@@ -9,4 +9,9 @@ module.exports = [
     title: 'Samlpe Title',
     theme: './styles/base.css'
   },
+  {
+    path: 'free/52-topi.md',
+    title: 'Rubyのsortって何ソート？',
+    theme: './styles/52-topi.css'
+  },
 ];
