@@ -9,4 +9,9 @@ module.exports = [
     title: 'Samlpe Title',
     theme: './styles/base.css'
   },
+  {
+    path: 'free/34-yuita.md',
+    title: 'Goで簡単なAPIを作ってみた',
+    theme: './styles/base.css'
+  },
 ];
