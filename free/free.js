@@ -14,4 +14,9 @@ module.exports = [
     title: 'JavaScriptからの護身術',
     theme: './styles/base.css'
   },
+  {
+    path: 'free/11-mochimochifarao.md',
+    title: 'AIと協働するための最低限の設計指針針',
+    theme: './styles/base.css'
+  }
 ];
