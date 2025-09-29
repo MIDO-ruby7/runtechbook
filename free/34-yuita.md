@@ -278,20 +278,20 @@ func NewUserUseCase(
 }
 
 func (u *userUseCaseImpl) Fetch(ctx context.Context, id int64) (*models.User, error) {
-    // repository層のコードを呼び出す。
+    // Repository層のコードを呼び出す。
 	return u.repository.Fetch(ctx, id)
 }
 // 略
 ```
 
-今回の実装では簡単な処理しか書いていないので、usecase層のコードはrepository層（DBとのインターフェース）のコードを呼び出すだけになっていますが、実際にはUseCase層はメインとなるロジックを実装するところなので、この層で複雑な処理が行われることもよくあります。
+今回の実装では簡単な処理しか書いていないので、UseCase層のコードはRepository層（DBとのインターフェース）のコードを呼び出すだけになっていますが、実際にはUseCase層はメインとなるロジックを実装するところなので、この層で複雑な処理が行われることもよくあります。
 
 ### UseCase層で実装される複雑な処理例
 - **ビジネスルールの検証**（例：ユーザーの削除可否判定）
 - **トランザクション**（例：複数テーブルのデータ操作）
 - **外部システム連携**（例：メール送信やプッシュ通知）
 
-ではusecase層で呼び出しているrepository層のコードを見ていきましょう。
+ではUseCase層で呼び出しているRepository層のコードを見ていきましょう。
 
 ## データアクセス層（Repository）
 ```go:./adapter/database/user.go
@@ -334,12 +334,12 @@ func (r *userRepositoryImpl) Fetch(ctx context.Context, id int64) (*models.User,
 ```
 
 ### Repository層の詳細な責務
-この層ではデータベースに対してSQLクエリを実行し、返却されたデータをGoの構造体にマッピングしています。repository層を使ってデータ操作をビジネスロジックから分離することで、**テスタビリティ**と**保守性**を向上させています。
+この層ではデータベースに対してSQLクエリを実行し、返却されたデータをGoの構造体にマッピングしています。Repository層を使ってデータ操作をビジネスロジックから分離することで、**テスタビリティ**と**保守性**を向上させています。
 
 ## 処理フローの全体像
 ここまで見たように、APIにリクエストがあった際は以下のように処理が流れていきます。
 
-**router → handler → usecase → repository**
+**Router → Handler → UseCase → Repository**
 
 ### 各層の相互作用
 
@@ -351,7 +351,7 @@ func (r *userRepositoryImpl) Fetch(ctx context.Context, id int64) (*models.User,
 このような層になったアーキテクチャにすると、適切に処理の責務を分離しやすくなり、各層のテストや変更の影響範囲の特定がしやすくなります。
 
 ## テスト戦略
-続いてテストについてです。Goではテストフレームワークなどは使わず、テストもGoで書くことがほとんどです。今回はrepository層のテストを書いています。DockerでテストDBを立ち上げ、そこにデータを流し込んでテストする方式を取っています。
+続いてテストについてです。Goではテストフレームワークなどは使わず、テストもGoで書くことがほとんどです。今回はRepository層のテストを書いています。DockerでテストDBを立ち上げ、そこにデータを流し込んでテストする方式を取っています。
 
 ```go
 /*
