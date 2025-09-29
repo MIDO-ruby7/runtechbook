@@ -13,8 +13,9 @@
 6. [Samlpe Title](#02-sample)  —  Taro
 
 ## 自由
-7. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
-8. [Samlpe Title](#02-sample)  —  Taro
+7. [k 近傍法でレモンサワーを探せ"](#53-yuuka)  —  ゆーか
+8. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
+9. [Samlpe Title](#02-sample)  —  Taro
 
-9. **おわりに**
-10. **奥付**
+10. **おわりに**
+11. **奥付**
