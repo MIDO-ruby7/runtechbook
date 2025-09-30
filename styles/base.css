@@ -492,7 +492,6 @@ h1 + .author {
 ----------------------------------------------*/
 @page {
   size: 182mm 257mm; /* B5サイズのページ設定 */
-  counter-increment: page;
 
   /* ヘッダーとフッターの設定 */
   @top-left-corner {
