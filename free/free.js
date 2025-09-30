@@ -18,5 +18,10 @@ module.exports = [
     path: 'free/11-mochimochifarao.md',
     title: 'AIと協働するための最低限の設計指針針',
     theme: './styles/base.css'
+  },
+  {
+    path: 'free/34-yuita.md',
+    title: 'Goで簡単なAPIを作ってみた',
+    theme: './styles/base.css'
   }
 ];
