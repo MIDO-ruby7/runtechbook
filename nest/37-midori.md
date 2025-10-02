@@ -11,33 +11,29 @@ author: "midori"
 「え、こんなの使うの？ほんとにコマンド打っていいの？」
 
 GUI（グラフィカルユーザーインターフェース）[^1]しか使ったことのない私にとって、あの黒い画面に意味の分からない文字列を打ち込み、エンターを押す瞬間は毎回緊張する体験でした。
-
-エンジニアとして働き始めた後も、Google Cloud Platform（GCP）やGitを操作するとき、経験豊富なエンジニアほどCLIを好んで使っています。ジュニアの私にとっては、操作対象が目に見えず、GUIのように直感的ではないCLIは、高度で難しいものに感じられ、CLIを使いこなすエンジニアは憧れの対象でもありました。
+エンジニアとして働き始めた後も、Google Cloud Platform（GCP）やGitを操作するとき、経験豊富なエンジニアほどCLIを好んで使っています。ジュニアの私にとっては、操作対象が目に見えず、GUIのように直感的ではないCLIは、高度で難しいものに感じられ、CLIを使いこなすエンジニアは憧れの対象でもありました。(Vimerほんとかっこいい)
 
 ところが近年、AIの普及によってCLIを補助するツールが続々と登場しています。自然言語で会話するだけで、ChatGPTやGitHub Copilotがコマンドを生成してくれたり、補完や自動化を助けてくれたりするようになりました。これにより、ターミナルは「コマンドを入力する黒い画面」から「AIと人間が協力して使う対話の場」へと進化しつつあります。結果として、ターミナルへの心理的なハードルもぐっと下がり、身近な存在になり始めています。
 
-しかし、そこで立ち止まって考えたいのが「そもそもターミナルはどう動いているのか？」という基礎です。ターミナルは表面的にはシンプルですが、実は50年以上基本構造が変わっていないようです。その裏側にはOSやシェルの仕組みと密接に関わっています。この仕組みを知ることは、AIとの未来を考えるうえでも大切です。
+しかし、そこで立ち止まって考えたいのが「そもそもターミナルはどう動いているのか？」という基礎です。ターミナルは表面的にはシンプルですが、実は50年以上基本構造が変わっていないようです。その裏側はOSやシェルの仕組みと密接に関わっています。この仕組みを知ることは、AIのような新しい技術と付き合っていく上でも重要だと考えました。
 
 本記事では以下を目指します：
 
 1. **ターミナルの歴史を知る**
 2. **ターミナルの仕組みを理解する**
-3. **TypeScriptでシンプルな擬似実装を行い、動きを直感的に理解する**
-
----
+3. **TypeScriptでシンプルな擬似実装を行い、ターミナルの仕組みを実際に確認する**
 
 [^1]: グラフィカルユーザーインターフェースとは、マウスやアイコンなどを用いて直感的に操作できる仕組みのことです。
 
 [^2]: インターフェースとは、人と機械が情報をやり取りする窓口のことです。ここでは「AIと人間が同じCLIを通じて対話する関係」を指しています。
 
----
 
 ## 2. ターミナルの歴史
 そもそも、ターミナルとは何でしょうか。調べてみると、コンピューターの歴史的な変遷と共に「コンピュータと人をつなぐ入出力装置」として進化してきたことが分かりました。まずはその歴史を見ていきたいと思います。
 
 ### 2.1 パンチカードの時代
 
-コンピューターが誕生したばかりの1950年代、プログラムの入力は「パンチカード」と呼ばれる厚紙に穴を開けるという方法でした。複数枚のカードを束ねてリーダーに通すと、一度に処理を実行できる仕組みです。
+1950年代、コンピューターへのプログラム入力は「パンチカード」と呼ばれる厚紙に穴を開ける方法で行われていました。複数枚のカードを束ね、カードリーダーに通すと一度に処理が実行されます。
 
 この時代のコンピューターは人間が即時に操作し、コンピューターが対話的に応答する仕組みは存在しませんでした。人間がカードを準備し、コンピューターが処理を行った後に、結果を後で紙に印刷するというサイクルで動いており、これは**バッチ処理**[^3]と呼ばれました。
 
@@ -65,11 +61,7 @@ GUI（グラフィカルユーザーインターフェース）[^1]しか使っ�
 UNIXの大きな特徴のひとつが、「すべてをファイルとして扱う」 という設計思想です。
 
 ここでいう「ファイル」とは、単にハードディスク上の文書や画像だけではありません。
-キーボード
-ディスプレイ
-プリンタ
-通信ポート
-といった 入出力装置までも「特別なファイル」 として表現されました。
+キーボード、ディスプレイ、プリンタ、通信ポートといった 入出力装置までも「特別なファイル」 として表現されました。
 端末も例外ではなく、`/dev/tty` というファイルを通じて利用されます。`dev`は`device`、`tty`は`teletypewriter`の略です。
 プログラムは `/dev/tty` に書き込めば端末に文字が表示され、読み込めばユーザーのキー入力を得られる仕組みです。
 
@@ -78,7 +70,6 @@ UNIXの大きな特徴のひとつが、「すべてをファイルとして扱�
 ### 2.3 ディスプレイ端末と制御コード
 1970年代後半には、紙ではなくディスプレイに文字を映すビデオ端末が普及します。代表例が1978年登場の VT100 です。
 VT100は制御コード（ANSIエスケープ）を導入し、アプリは文字列を出力するだけで端末がカーソル移動・色付け・画面消去を実行できるようになりました。
-端末ごとの差異（“方言”）はtermcap/terminfoといった抽象化レイヤが吸収し、アプリは「やりたいこと」を宣言し、ライブラリが「端末固有の制御列」に翻訳する形へ収れんしました。
 この仕組みは、現代の `ls --color` やプログレスバー表示にも通底しています。
 ![By Jason Scott - Flickr: IMG_9976, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=29457452](https://storage.googleapis.com/zenn-user-upload/5f56c5387dcf-20250908.jpg){style="width:90%;"}
 
@@ -322,7 +313,7 @@ ls > result.txt
 ### 4.2 実装
 
 
-| ラベル    | 要素名                  | これは何？                      | コード上の実体                                                     | 何の代わり？（狙い）                                           |
+|     | 要素名                  | これは何？                      | コード上の実体                                                     | 何の代わり？（狙い）                                           |
 | ------ | -------------------- | -------------------------- | ----------------------------------------------------------- | ---------------------------------------------------- |
 | **1** | **PtyPair**          | 入出力の**配線アダプタ**（人↔シェルの往復）   | `class PtyPair { masterIn/masterOut/slaveIn/slaveOut }`     | 本物の **Pseudo TTY(PTY)** の簡易再現（`PassThrough`でメモリ内パイプ） |
 | **2** | **Shell**            | **REPL 本体**（1行読む→解釈→実行→表示） | `class MiniShell { run(); tokenize(); }`                    | **bash/zsh** の最小版（まずは行単位でディスパッチのみ）                   |
@@ -343,10 +334,15 @@ import { setTimeout as sleepMs } from "node:timers/promises";
 
 // -----------------------------
 // 1) 擬似端末 (PTY) ペア
+//   - master*: 人間(端末)側
+//   - slave*:  シェル側
+//   2方向のデータ流れを PassThrough で再現します
 // -----------------------------
 class PtyPair {
-  masterIn = new PassThrough();   // Terminal → masterIn → slaveIn
-  masterOut = new PassThrough();  // slaveOut → masterOut → Terminal
+  // Terminal → masterIn → (pipe) → slaveIn → Shell
+  masterIn = new PassThrough();
+  // Shell → slaveOut → (pipe) → masterOut → Terminal
+  masterOut = new PassThrough();
   slaveIn = new PassThrough();
   slaveOut = new PassThrough();
 
@@ -359,8 +355,11 @@ class PtyPair {
 }
 
 // -----------------------------
-// 2) ユーティリティ（トークン化）
+// ユーティリティ（トークン化）
 //  - クォート対応の軽量パーサ（超簡易）
+//  - 空白で区切るが、' ' や " " で囲まれた空白は1つの単語として扱う
+//  - 例: tokenize(`echo "hello world"`) → ["echo","hello world"]
+//  - 厳密なシェル構文ではなく最小仕様
 // -----------------------------
 function tokenize(line: string): string[] {
   const tokens: string[] = [];
@@ -397,8 +396,15 @@ function tokenize(line: string): string[] {
 
 // -----------------------------
 // 3) Builtin Commands
+//   - ここに {名前: 関数} を追加すると、新しいコマンドが増える
+//   - Cmd は「引数と入出力インターフェースを受け、終了コードを返す」関数
 // -----------------------------
-type IO = { stdin: Readable; stdout: Writable; stderr: Writable; prompt: () => void };
+type IO = {
+  stdin: Readable;  // コマンドの標準入力（今は空。将来パイプ実装で活きる）
+  stdout: Writable;  // コマンドの標準出力
+  stderr: Writable;  // コマンドの標準エラー出力
+  prompt: () => void; // プロンプト再表示用のコールバック（必要時に呼ぶ）
+};
 type Cmd = (args: string[], io: IO) => Promise<number> | number;
 
 const commands: Record<string, Cmd> = {
@@ -416,7 +422,7 @@ const commands: Record<string, Cmd> = {
         "Tips: パイプやリダイレクトは未対応（最小実装）",
       ].join("\n") + "\n"
     );
-    return 0;
+    return 0; // 終了コード0 = 成功
   },
 
   echo: async (args, io) => {
@@ -455,12 +461,18 @@ const commands: Record<string, Cmd> = {
 };
 
 // -----------------------------
-// 4) シェル（REPL）
+// 2) シェル（REPL）
+//   - 1行読み取って → tokenize → commands から関数を引き当てて実行
+//   - 未定義コマンドはエラーメッセージを出して次のプロンプトへ
 // -----------------------------
 class MiniShell {
   private rl: readline.Interface;
 
-  constructor(private slaveIn: Readable, private slaveOut: Writable, private slaveErr: Writable) {
+  constructor(
+    private slaveIn: Readable,   // シェルが読む（人間から来る）入力
+    private slaveOut: Writable,  // シェルが書く（人間へ返す）出力
+    private slaveErr: Writable   // エラー表示用
+  ) {
     this.rl = readline.createInterface({
       input: this.slaveIn,
       output: this.slaveOut,
@@ -473,17 +485,22 @@ class MiniShell {
     this.slaveOut.write("> ");
   }
 
+  // メインループ：1行ずつ処理
   async run() {
     this.prompt();
     for await (const line of this.rl) {
       const trimmed = line.trim();
       if (!trimmed) {
+        // 空行は何もしないで次のプロンプト
         this.prompt();
         continue;
       }
+
       const [cmd, ...args] = tokenize(trimmed);
       const impl = commands[cmd];
+
       if (!impl) {
+        // 未知コマンド
         this.slaveErr.write(`command not found: ${cmd}\n`);
         this.prompt();
         continue;
@@ -495,14 +512,17 @@ class MiniShell {
       stdin.end();
 
       try {
+        // コマンドを実行
         await impl(args, {
           stdin,
           stdout: this.slaveOut,
           stderr: this.slaveErr,
           prompt: () => this.prompt(),
         });
-      } catch (e: any) {
-        this.slaveErr.write(`error: ${e?.message ?? String(e)}\n`);
+      } catch (e: unknown) {
+        const msg = e instanceof Error ? e.message : String(e);
+        // コマンドの実行時エラーを握りつぶさず通知
+        this.slaveErr.write(`error: ${msg}\n`);
       }
       this.prompt();
     }
@@ -510,7 +530,9 @@ class MiniShell {
 }
 
 // -----------------------------
-// 5) Terminal（人間側の出入口）
+// 4) Terminal（人間側の出入口）
+//   - キーボード入力を masterIn に流し、Shell の出力を stdout に表示
+//   - Ctrl+C は「いまの行を諦めて次のプロンプトへ」という簡易挙動
 // -----------------------------
 async function main() {
   const pty = new PtyPair();
@@ -581,19 +603,38 @@ npx tsx mini-terminal.ts
 
 > これは、最小実装なので **パイプ（`|`）やリダイレクト（`>`）** は未対応です。
 
-文字数と締め切りにより、ここではどのような挙動をするかあえて解説しません。
+文字数と締め切りにより、ここではどのような挙動をするかあえて解説しません()
 もし良ければ、ぜひ試してみてください。
 
----
 
 ### 4.4 まとめ
 この実装からも、ターミナルは「入力と出力を結ぶ通話路」であり、シェルはその入力を解釈してプログラムへ渡す受付係として機能します。そして、Ctrl+C のような割り込みも、本質的には「特別な文字列を入力ストリームに流す仕組み」として説明できます。
 
 
 ### 5. 最後に
-今回この記事を書いたことで、黒い画面の奥にある奥深さと歴史をあらためて感じることができました。（もう怖くないぞ！）
-とりわけ強く実感したのは、「シンプルであること」の凄さです。コンピュータやOSには流行り廃りがありますが、その中でターミナルは何十年も利用され続けてきました。そして現代、AI時代を迎えた今でも、その存在はむしろ再評価され、最盛を迎えています。
+今回この記事を書いたことで、黒い画面の奥深さを感じることができました。（もう怖くないぞ！）
+とりわけ強く実感したのは、「シンプルであること」の凄さです。コンピュータやOSには流行り廃りがありますが、その中でターミナルは何十年も利用され続けてきました。そしてAI時代を迎えた今でも、その存在はむしろ再評価され、最盛を迎えています。
 
-これは、ターミナルが複雑な機能を詰め込んだからではありません。むしろ逆で、「文字をやり取りする」という最小限の仕組みに徹しているからこそ、どんな時代の技術とも接続でき、使い続けられるのです。
-シンプルであることは一見地味ですが、それこそが長く生き残る力を持ち、普遍性を与えるのだと感じました。
+これは、ターミナルが複雑な機能を詰め込んだからではありません。むしろ逆で、「文字をやり取りする」「全てをファイルとみなす」という最小限の仕組みに徹しているからこそ、どんな時代の技術とも接続でき、使い続けられるのです。
+シンプルであることは一見地味ですが、それこそが長く生き残る力を持ち、普遍性を与えるのだと感じました。今後エンジニアとして、このような普遍性があり長く愛されるサービスを作る上でも大事にしたいなと思いました。
 「黒い画面が怖い」あなたに、この記事を通して共感してもらえたら幸いです。
+
+### 参考文献
+Gregory Anders, “State of the Terminal,” g.p. anders blog, March 12, 2024.
+URL: https://gpanders.com/blog/state-of-the-terminal/
+ (参照日：2025年10月)
+
+ Linus Åkesson, “The TTY demystified,” linusakesson.net – Programming，History セクションほか．
+URL: https://www.linusakesson.net/programming/tty/
+ (参照日：2025年10月)
+
+ LPI Learning Materials, “103.4_01: Input, Output, Storage,” LPI Learning Portal.
+URL: https://learning.lpi.org/en/learning-materials/101-500/103/103.4/103.4_01/
+ (参照日：2025年10月)
+
+ 武内 覚, 試して理解 Linux のしくみ — 実験と図解で学ぶ OS、仮想マシン、コンテナの基礎知識【増補改訂版】, 技術評論社, 2022年10月刊行
+ https://amzn.asia/d/ceU9Fjn
+
+R. Koucha, “PTY / Pseudo-Terminal (PTY, PDIP) — Redirection of Standard Input and Outputs of a Process,” Tech Corner.
+URL: https://www.rkoucha.fr/tech_corner/pty_pdip.html
+ (参照日：2025年10月)
