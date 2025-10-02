@@ -20,8 +20,12 @@ module.exports = [
     theme: './styles/base.css'
   },
   {
+    path: 'free/34-yuita.md',
+    title: 'Goで簡単なAPIを作ってみた',
+    theme: './styles/base.css'
+  },
+  {
     path: 'free/hisaju.md',
     title: 'ひさじゅ式発火原因別火消し術 〜世界一役に立たないプロジェクトマネジメント術〜',
-    theme: './styles/base.css'
-  }
+  },
 ];
