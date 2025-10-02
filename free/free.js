@@ -18,5 +18,10 @@ module.exports = [
     path: 'free/11-mochimochifarao.md',
     title: 'AIと協働するための最低限の設計指針針',
     theme: './styles/base.css'
+  },
+  {
+    path: 'free/hisaju.md',
+    title: 'ひさじゅ式発火原因別火消し術 〜世界一役に立たないプロジェクトマネジメント術〜',
+    theme: './styles/base.css'
   }
 ];
