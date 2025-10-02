@@ -20,6 +20,11 @@ module.exports = [
     theme: './styles/base.css'
   },
   {
+    path: 'free/51-noguchi.md',
+    title: 'ぐっち',
+    theme: './styles/base.css'
+  },
+  {
     path: 'free/34-yuita.md',
     title: 'Goで簡単なAPIを作ってみた',
     theme: './styles/base.css'
