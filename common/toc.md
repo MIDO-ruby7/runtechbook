@@ -10,8 +10,9 @@
 5. [文字化けから学ぶ、文字コード](#36-toshiki003)  —  Toshiki003
 
 ## HUB
-6. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
-7. [Samlpe Title](#02-sample)  —  Taro
+5. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
+6. [Samlpe Title](#02-sample)  —  Taro
+7. [振り返りを習慣化させるアプリ、ReflectHubをSupabaseとNext.jsで作成してみる。](#27-hiiragi)  —  柊
 
 ## 自由
 7. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
