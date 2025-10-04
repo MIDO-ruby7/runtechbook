@@ -33,4 +33,9 @@ module.exports = [
     path: 'free/hisaju.md',
     title: 'ひさじゅ式発火原因別火消し術 〜世界一役に立たないプロジェクトマネジメント術〜',
   },
+  {
+    path: 'free/34-renatti.md',
+    title: 'DenoでLinuxコマンドを作ろう',
+    theme: './styles/base.css'
+  }
 ];
