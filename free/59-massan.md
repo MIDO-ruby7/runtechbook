@@ -1,5 +1,5 @@
 ---
-title: "ここに記事のタイトルを入力"
+title: "黒魔術！？ActiveRecordがSQLを発行する仕組み"
 author: "massan"
 ---
 

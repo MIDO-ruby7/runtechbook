@@ -11,7 +11,7 @@ module.exports = [
   },
   {
     path: 'free/59-massan.md',
-    title: 'ActiveRecordの内部設計 ～その正体は“遅延評価”という名の高度なアーキテクチャだった～',
+    title: '黒魔術！？ActiveRecordがSQLを発行する仕組み',
     theme: './styles/base.css'
   },
 ];
