@@ -15,9 +15,9 @@
 7. [振り返りを習慣化させるアプリ、ReflectHubをSupabaseとNext.jsで作成してみる。](#27-hiiragi)  —  柊
 
 ## 自由
-7. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
-8. [Samlpe Title](#02-sample)  —  Taro
-9. [Javascriptからの護身術](#59-botofune)  —  ぼとふね
+7. [k 近傍法でレモンサワーを探せ"](#53-yuuka)  —  ゆーか
+8. [ChatGPTの効果的な使い方](#01-sample)  —  Tanaka
+9. [Samlpe Title](#02-sample)  —  Taro
 
 10. **おわりに**
 11. **奥付**
