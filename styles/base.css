@@ -317,6 +317,15 @@ ul, ol {
   padding-inline-start: 1.5em; /* 左のインデントを設定 */
 }
 
+/* チェックボックス付きリストのマーカーを非表示 */
+li:has(input[type="checkbox"]) {
+  list-style: none;
+}
+
+ul:has(input[type="checkbox"]) {
+  list-style-type: none;
+}
+
 /*---------------------------------------------
   画像の設定
   最大幅を100%に設定し、画像の中央寄せを行う
