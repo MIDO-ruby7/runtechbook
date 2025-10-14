@@ -29,6 +29,11 @@ module.exports = [
     title: 'Goで簡単なAPIを作ってみた',
     theme: './styles/base.css'
   },
+  { 
+    path: 'free/52-topi.md',
+    title: 'Rubyのsortって何ソート？',
+    theme: './styles/52-topi.css'
+  },
   {
     path: 'free/hisaju.md',
     title: 'ひさじゅ式発火原因別火消し術 〜世界一役に立たないプロジェクトマネジメント術〜',
