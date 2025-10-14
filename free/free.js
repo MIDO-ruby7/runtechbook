@@ -38,4 +38,9 @@ module.exports = [
     path: 'free/hisaju.md',
     title: 'ひさじゅ式発火原因別火消し術 〜世界一役に立たないプロジェクトマネジメント術〜',
   },
+  {
+    path: 'free/27-shuto.md',
+    title: '文系エンジニアがアルゴリズムの問題を解くときに感じる「宇宙猫状態」のナゾを紐解いてみた',
+    theme: './styles/base.css'
+  },
 ];
