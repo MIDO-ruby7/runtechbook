@@ -43,4 +43,9 @@ module.exports = [
     title: '文系エンジニアがアルゴリズムの問題を解くときに感じる「宇宙猫状態」のナゾを紐解いてみた',
     theme: './styles/base.css'
   },
+  {
+    path: 'free/59-massan.md',
+    title: '黒魔術！？ActiveRecordがSQLを発行する仕組み',
+    theme: './styles/base.css'
+  }
 ];
