@@ -9,4 +9,9 @@ module.exports = [
     title: 'Samlpe Title',
     theme: './styles/base.css'
   },
+  {
+    path: 'hub/27-hiiragi.md',
+    title: '振り返りを習慣化させるアプリ、ReflectHubをSupabaseとNext.jsで作成してみる。',
+    theme: './styles/base.css'
+  },
 ];

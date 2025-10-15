@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
@@ -11,8 +10,8 @@
   コードブロック全般のスタイル設定
   対象: コードが書かれている全ての要素（pre, code）
 ----------------------------------------------*/
-code[class*='language-'],
-pre[class*='language-'] {
+code[class*="language-"],
+pre[class*="language-"] {
   color: #f8f8f2; /* テキストの色（オフホワイト） */
   background: none; /* 背景色をなしに設定 */
   text-shadow: 0 1px rgba(0, 0, 0, 0.3); /* テキストに薄い影をつけて浮き立たせる */
@@ -35,7 +34,7 @@ pre[class*='language-'] {
 /*---------------------------------------------
   コードブロックのスタイル設定（preタグ内）
 ----------------------------------------------*/
-pre[class*='language-'] {
+pre[class*="language-"] {
   padding: 1em; /* 内側の余白 */
   margin: 0.5em 0; /* 上下の外側余白 */
   overflow: auto; /* コンテンツがはみ出た場合にスクロール可能 */
@@ -45,15 +44,15 @@ pre[class*='language-'] {
 /*---------------------------------------------
   コードブロックの背景色設定（非preタグ内のコードも含む）
 ----------------------------------------------*/
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
   background: #272822; /* 背景色をダークグリーン（Monokai風）に設定 */
 }
 
 /*---------------------------------------------
   インラインコードのスタイル設定（codeタグ内）
 ----------------------------------------------*/
-:not(pre) > code[class*='language-'] {
+:not(pre) > code[class*="language-"] {
   padding: 0.1em; /* 内側の余白 */
   border-radius: 0.3em; /* 角を丸くする */
   white-space: normal; /* 改行をそのまま反映 */
@@ -141,8 +140,8 @@ pre[class*='language-'] {
   コードブロック全般に追加のスタイル設定
   テキストの影を削除し、行間と文字間を調整
 ----------------------------------------------*/
-code[class*='language-'],
-pre[class*='language-'] {
+code[class*="language-"],
+pre[class*="language-"] {
   line-height: 1.2 !important; /* 行間を調整 */
   letter-spacing: 0.03rem !important; /* 文字間隔を少し広げる */
   border-radius: 0.2rem !important; /* 角を丸く設定 */
@@ -224,7 +223,10 @@ pre[class*='language-'] {
   Webページ全体の基本フォントを設定
 ----------------------------------------------*/
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Meiryo",
+    sans-serif;
   font-weight: 400; /* 標準的なフォントの太さ */
   line-height: 1.7; /* 行間の設定 */
   font-feature-settings: "palt" 1; /* プロポーショナルメトリクス */
@@ -239,8 +241,12 @@ pre[class*='language-'] {
 h1,
 h2,
 h3 {
-  font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-  font-feature-settings: 'palt' 1, 'calt' 1; /* 文字の合字を使用 */
+  font-family:
+    "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+    "Yu Gothic", "Meiryo", sans-serif;
+  font-feature-settings:
+    "palt" 1,
+    "calt" 1; /* 文字の合字を使用 */
   font-weight: 600;
   letter-spacing: 0.02em;
 }
@@ -284,7 +290,9 @@ a:hover {
   改行を自動で調整し、文章を左右揃え
 ----------------------------------------------*/
 p {
-  font-feature-settings: 'calt' 1, 'kern' 1; /* 合字とカーニングを使用 */
+  font-feature-settings:
+    "calt" 1,
+    "kern" 1; /* 合字とカーニングを使用 */
   text-align: justify; /* 両端揃え */
   line-height: 1.8;
   letter-spacing: 0.03em;
@@ -296,9 +304,13 @@ p {
   インラインコードやコードブロックのフォントを指定
 ----------------------------------------------*/
 code {
-  font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Consolas", "Menlo", "Source Code Pro", "Courier New", monospace !important;
+  font-family:
+    "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Consolas", "Menlo",
+    "Source Code Pro", "Courier New", monospace !important;
   font-size: 0.9em;
-  font-feature-settings: "liga" 1, "calt" 1; /* コード用リガチャ */
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1; /* コード用リガチャ */
 }
 
 /*---------------------------------------------
@@ -313,17 +325,9 @@ pre {
   リスト（ul, ol）の設定
   インデントを設定してリスト項目の余白を調整
 ----------------------------------------------*/
-ul, ol {
+ul,
+ol {
   padding-inline-start: 1.5em; /* 左のインデントを設定 */
-}
-
-/* チェックボックス付きリストのマーカーを非表示 */
-li:has(input[type="checkbox"]) {
-  list-style: none;
-}
-
-ul:has(input[type="checkbox"]) {
-  list-style-type: none;
 }
 
 /*---------------------------------------------
@@ -368,14 +372,16 @@ table {
   border-collapse: collapse; /* 表のボーダーを重ねて表示 */
 }
 
-table th, table td {
-  padding: .2em .2em .2em 0; /* セルの余白 */
+table th,
+table td {
+  padding: 0.2em 0.2em 0.2em 0; /* セルの余白 */
   background-color: transparent; /* セルの背景色を透明に設定 */
   border: 0; /* ボーダーをなしに設定 */
 }
 
-table th:first-child, table td:first-child {
-  padding-left: .2em; /* 左端に少し余白を追加 */
+table th:first-child,
+table td:first-child {
+  padding-left: 0.2em; /* 左端に少し余白を追加 */
 }
 
 table th {
@@ -428,13 +434,13 @@ h1 + .author {
   color: #4682b4;
   font-weight: 500;
   position: relative;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+  font-family:
+    "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
 }
 
 .page-break {
   page-break-after: always !important; /* ページ分割 */
 }
-
 
 /*---------------------------------------------
   印刷用メディアスタイル
@@ -449,7 +455,12 @@ h1 + .author {
     font-size: 75%; /* フォントサイズを縮小 */
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     break-after: avoid; /* 見出しの後でページ分割を避ける */
   }
 
@@ -461,7 +472,9 @@ h1 + .author {
     font-size: 1.2rem; /* h3タグのフォントサイズ */
   }
 
-  tr, th, td {
+  tr,
+  th,
+  td {
     break-inside: avoid; /* 表の行内で分割を避ける */
   }
 
@@ -470,7 +483,7 @@ h1 + .author {
     text-decoration: underline; /* リンクに下線を追加 */
   }
 
-  pre[class*='language-'] {
+  pre[class*="language-"] {
     font-size: 90%; /* コードブロックのフォントサイズを調整 */
     text-overflow: ellipsis; /* コードが長い場合は省略記号を表示 */
   }
@@ -496,25 +509,25 @@ h1 + .author {
 
   /* ヘッダーとフッターの設定 */
   @top-left-corner {
-    content: '';
+    content: "";
     margin-bottom: 0;
     background-color: #ffffff;
   }
 
   @top-center {
-    content: '';
+    content: "";
     margin-bottom: 0;
     background-color: #ffffff;
   }
 
   @top-right-corner {
-    content: '';
+    content: "";
     margin-bottom: 0;
     background-color: #ffffff;
   }
 
   @bottom-left-corner {
-    content: '';
+    content: "";
     margin-top: -8mm;
     margin-bottom: -3mm;
     margin-left: -3mm;
@@ -523,11 +536,11 @@ h1 + .author {
   }
 
   @bottom-right-corner {
-    content: '';
+    content: "";
     margin-top: -8mm;
     margin-bottom: -3mm;
     margin-right: -3mm;
-    background-color:#ffffff;
+    background-color: #ffffff;
     z-index: 1000; /* 最前面に表示 */
   }
 }
@@ -552,14 +565,20 @@ h1 + .author {
     padding: 5mm 2mm;
     margin-right: 5mm;
     margin-left: 0;
-    background: linear-gradient(to bottom, rgba(135, 206, 235, 0.1), transparent);
+    background: linear-gradient(
+      to bottom,
+      rgba(135, 206, 235, 0.1),
+      transparent
+    );
     border-right: 1px solid rgba(70, 130, 180, 0.2);
     letter-spacing: 0.1em;
   }
 
   @bottom-left {
     content: counter(page); /* ページ番号を表示 */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial",
+      "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
     font-size: 75%;
     border-left: 1px solid;
     margin-top: 15mm;
@@ -589,14 +608,20 @@ h1 + .author {
     padding: 5mm 2mm;
     margin-left: 5mm;
     margin-right: 0;
-    background: linear-gradient(to bottom, rgba(135, 206, 235, 0.1), transparent);
+    background: linear-gradient(
+      to bottom,
+      rgba(135, 206, 235, 0.1),
+      transparent
+    );
     border-left: 1px solid rgba(70, 130, 180, 0.2);
     letter-spacing: 0.1em;
   }
 
   @bottom-right {
     content: counter(page); /* ページ番号を表示 */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Arial",
+      "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
     font-size: 75%;
     border-right: 1px solid;
     margin-top: 15mm;
@@ -613,7 +638,8 @@ h1 {
   font-size: 1.6rem;
   font-weight: bold;
   text-align: center;
-  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+  font-family:
+    "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
   color: #222;
   border: 2px solid #222; /* しっかりめの黒枠 */
   border-radius: 0.75rem;
@@ -624,9 +650,12 @@ h1 {
 }
 
 h1::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 5px; left: 5px; right: -8px; bottom: -8px;
+  top: 5px;
+  left: 5px;
+  right: -8px;
+  bottom: -8px;
   background: #9ac7df;
   border-radius: 0.75rem;
   z-index: -1;
@@ -645,3 +674,12 @@ li[role="doc-endnote"] a {
 }
 
 /*# sourceMappingURL=bundle.css.map */
+
+/* topi-custom-css */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
