@@ -35,10 +35,6 @@ module.exports = [
     theme: './styles/52-topi.css'
   },
   {
-    path: 'free/hisaju.md',
-    title: 'ひさじゅ式発火原因別火消し術 〜世界一役に立たないプロジェクトマネジメント術〜',
-  },
-  {
     path: 'free/27-shuto.md',
     title: '文系エンジニアがアルゴリズムの問題を解くときに感じる「宇宙猫状態」のナゾを紐解いてみた',
     theme: './styles/base.css'
@@ -47,5 +43,14 @@ module.exports = [
     path: 'free/59-massan.md',
     title: '黒魔術！？ActiveRecordがSQLを発行する仕組み',
     theme: './styles/base.css'
-  }
+  },
+  {
+    path: 'free/34-renatti.md',
+    title: 'DenoでLinuxコマンドを作ろう',
+    theme: './styles/base.css'
+  },
+  {
+    path: 'free/hisaju.md',
+    title: 'ひさじゅ式発火原因別火消し術 〜世界一役に立たないプロジェクトマネジメント術〜',
+  },
 ];
