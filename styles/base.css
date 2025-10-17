@@ -18,10 +18,10 @@ pre[class*='language-'] {
   text-shadow: 0 1px rgba(0, 0, 0, 0.3); /* テキストに薄い影をつけて浮き立たせる */
   font-size: 1em; /* フォントサイズをデフォルトに設定 */
   text-align: left; /* 左揃え */
-  white-space: pre; /* 改行をそのまま反映 */
+  white-space: pre-wrap; /* 改行をそのまま反映し、長い行は折り返す */
   word-spacing: normal; /* 通常の単語間スペース */
   word-break: normal; /* 単語の途中での改行を許可しない */
-  word-wrap: normal; /* 単語を途中で改行しない */
+  word-wrap: break-word; /* 長い単語は折り返す */
   line-height: 1.5; /* 行間を1.5倍に設定 */
   -moz-tab-size: 4; /* Firefox用タブ幅 */
   -o-tab-size: 4; /* Opera用タブ幅 */
@@ -492,7 +492,6 @@ h1 + .author {
 ----------------------------------------------*/
 @page {
   size: 182mm 257mm; /* B5サイズのページ設定 */
-  counter-increment: page;
 
   /* ヘッダーとフッターの設定 */
   @top-left-corner {

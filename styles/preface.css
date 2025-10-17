@@ -5,6 +5,7 @@
 ----------------------------------------------*/
 @page {
   size: 182mm 257mm; /* A5サイズのページ設定 */
+  counter-increment: page; /* ページ番号を継続 */
 
   @bottom-left-corner {
     content: '';
